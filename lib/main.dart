@@ -1,6 +1,6 @@
-import 'package:figma/const_size.dart';
 import 'package:figma/order.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,9 +11,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    sizeSmallScreenWidth = MediaQuery.of(context).size.width * 0.3;
-    sizeSmallScreenHeight = MediaQuery.of(context).size.height;
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       home: const FigmaPage(),
