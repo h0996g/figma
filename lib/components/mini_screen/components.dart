@@ -136,7 +136,7 @@ class LabeledBorder extends StatelessWidget {
             border: Border.all(
               color: Colors.orange,
             ),
-            borderRadius: BorderRadius.circular(5),
+            borderRadius: BorderRadius.circular(3),
             // borderRadius:
           ),
           child: Center(child: child),
@@ -144,7 +144,7 @@ class LabeledBorder extends StatelessWidget {
 
         // Right label
         Positioned(
-          right: -9,
+          right: -5,
           top: 0,
           bottom: 0,
           child: Center(
@@ -155,7 +155,7 @@ class LabeledBorder extends StatelessWidget {
                 color: Theme.of(context).scaffoldBackgroundColor,
                 child: Text(
                   rightLabel,
-                  style: const TextStyle(fontSize: 10),
+                  style: const TextStyle(fontSize: 6),
                 ),
               ),
             ),
@@ -165,14 +165,14 @@ class LabeledBorder extends StatelessWidget {
         Positioned(
           left: 0,
           right: 0,
-          bottom: -9,
+          bottom: -6,
           child: Center(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
               color: Theme.of(context).scaffoldBackgroundColor,
               child: Text(
                 bottomLabel,
-                style: const TextStyle(fontSize: 10),
+                style: const TextStyle(fontSize: 7),
               ),
             ),
           ),

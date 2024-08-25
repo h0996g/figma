@@ -2,6 +2,7 @@ import 'package:figma/components/mini_screen/components.dart';
 import 'package:figma/const_size.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class MiniScreen extends StatelessWidget {
   final double sizeSmallScreenWidth;
@@ -28,6 +29,7 @@ class MiniScreen extends StatelessWidget {
                 ],
               ),
             ),
+
             Card(
               color: Colors.white,
               elevation: 0,
@@ -57,6 +59,7 @@ class MiniScreen extends StatelessWidget {
                     isPcs: true,
                     price: '2800',
                   ),
+                  const SizedBox(height: 5),
                   _buildResponsiveRow3(
                     screenSizeWidth: screenSizeWidthOnly,
                     screenSizeHeight: sizeSmallScreenHeight,
@@ -67,6 +70,7 @@ class MiniScreen extends StatelessWidget {
                     isPcs: true,
                     price: '2800',
                   ),
+                  const SizedBox(height: 5),
                   _buildResponsiveRow3(
                     screenSizeWidth: screenSizeWidthOnly,
                     screenSizeHeight: sizeSmallScreenHeight,
@@ -77,6 +81,7 @@ class MiniScreen extends StatelessWidget {
                     isPcs: false,
                     price: '2800',
                   ),
+                  const SizedBox(height: 5),
                   _buildResponsiveRow3(
                     screenSizeWidth: screenSizeWidthOnly,
                     screenSizeHeight: sizeSmallScreenHeight,
@@ -89,6 +94,7 @@ class MiniScreen extends StatelessWidget {
                     oldPrice: '2800',
                     discount: '20%',
                   ),
+                  const SizedBox(height: 5),
                   _buildResponsiveRow3(
                     screenSizeWidth: screenSizeWidthOnly,
                     screenSizeHeight: sizeSmallScreenHeight,
@@ -99,6 +105,40 @@ class MiniScreen extends StatelessWidget {
                     isPcs: true,
                     price: '2800',
                   ),
+                  const SizedBox(height: 5),
+                  _buildResponsiveRow3(
+                    screenSizeWidth: screenSizeWidthOnly,
+                    screenSizeHeight: sizeSmallScreenHeight,
+                    quantity: '1',
+                    title:
+                        'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
+                    subtitle: 'Italien - Stor',
+                    isPcs: true,
+                    price: '2800',
+                  ),
+                  const SizedBox(height: 5),
+                  _buildResponsiveRow3(
+                    screenSizeWidth: screenSizeWidthOnly,
+                    screenSizeHeight: sizeSmallScreenHeight,
+                    quantity: '1',
+                    title:
+                        'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
+                    subtitle: 'Italien - Stor',
+                    isPcs: true,
+                    price: '2800',
+                  ),
+                  const SizedBox(height: 5),
+                  _buildResponsiveRow3(
+                    screenSizeWidth: screenSizeWidthOnly,
+                    screenSizeHeight: sizeSmallScreenHeight,
+                    quantity: '1',
+                    title:
+                        'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
+                    subtitle: 'Italien - Stor',
+                    isPcs: true,
+                    price: '2800',
+                  ),
+                  const SizedBox(height: 5),
                   _buildResponsiveRow3(
                     screenSizeWidth: screenSizeWidthOnly,
                     screenSizeHeight: sizeSmallScreenHeight,
@@ -130,216 +170,151 @@ class MiniScreen extends StatelessWidget {
     );
   }
 
-  Widget bottomNavBar(context) {
-    return Theme(
-      data: Theme.of(context).copyWith(
-        canvasColor: Colors.white,
-      ),
+  Widget bottomNavBar(BuildContext context) {
+    return SizedBox(
+      height: Get.height * 0.09, // Set the height to your desired value
       child: BottomNavigationBar(
-        // selectedItemColor: Colors.amber[800],
-        showSelectedLabels: false, // Hides the label for selected items
+        showSelectedLabels: false,
         showUnselectedLabels: false,
         type: BottomNavigationBarType.fixed,
-        items: <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/icons/mini_screen/Vector-5.svg',
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/icons/mini_screen/Vector-6.svg',
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/icons/mini_screen/Vector-7.svg',
-            ),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              'assets/icons/mini_screen/Vector-8.svg',
-              color: Colors.grey.shade400,
-            ),
-            label: '',
-          ),
+        backgroundColor: Colors.white,
+        items: [
+          _buildNavItem('assets/icons/mini_screen/Vector-5.svg'),
+          _buildNavItem('assets/icons/mini_screen/Vector-6.svg'),
+          _buildNavItem('assets/icons/mini_screen/Vector-7.svg'),
+          _buildNavItem('assets/icons/mini_screen/Vector-8.svg',
+              color: Colors.grey.shade400),
         ],
-        // selectedItemColor: Colors.amber[800],
       ),
+    );
+  }
+
+  BottomNavigationBarItem _buildNavItem(String assetPath, {Color? color}) {
+    return BottomNavigationBarItem(
+      icon: SvgPicture.asset(
+        assetPath,
+        color: color,
+        width: 15,
+        height: 15,
+      ),
+      label: '',
     );
   }
 
   Widget _buildTotalPriceWidget(double screenWidth, double fontSize) {
     return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisSize: MainAxisSize.max,
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Row(
-          children: [
-            Expanded(
-              child: Column(
-                children: [
-                  Text(
-                    'Subtotal',
-                    style: TextStyle(color: Colors.grey.shade500),
-                  ),
-                  // SizedBox(height: 2),
-                  Text('2000',
-                      style: TextStyle(
-                          fontSize: fontSize, fontWeight: FontWeight.w600)),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Column(
-                children: [
-                  Text(
-                    'Service',
-                    style: TextStyle(color: Colors.grey.shade500),
-                  ),
-                  // SizedBox(height: 2),
-                  Text('175',
-                      style: TextStyle(
-                          fontSize: fontSize, fontWeight: FontWeight.w600)),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Column(
-                children: [
-                  Text(
-                    'Delivery',
-                    style: TextStyle(color: Colors.grey.shade500),
-                  ),
-                  // SizedBox(height: 2),
-                  Text('175',
-                      style: TextStyle(
-                          fontSize: fontSize, fontWeight: FontWeight.w600)),
-                ],
-              ),
-            ),
-            Expanded(
-              child: Column(
-                children: [
-                  Text(
-                    'Val',
-                    style: TextStyle(color: Colors.grey.shade500),
-                  ),
-                  // SizedBox(height: 2),
-                  Text('200',
-                      style: TextStyle(
-                          fontSize: fontSize, fontWeight: FontWeight.w600)),
-                ],
-              ),
-            )
-          ],
-        ),
-        Divider(
-          color: Colors.grey.shade200,
-        ),
-        Container(
-          // width: screenWidth,
-          padding: const EdgeInsets.symmetric(
-            horizontal: 20,
-          ),
-          // color: Colors.grey[200],
-          color: Colors.white,
+        Divider(color: Colors.grey.shade200, thickness: 1, height: 0),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: 2),
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Padding(
-                padding: const EdgeInsets.only(right: 5),
-                child: Container(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 5,
-                  ),
-                  decoration: BoxDecoration(
-                    color: Colors.red,
-                    borderRadius: BorderRadius.circular(15),
-                  ),
-                  child: Text(
-                    'Not paid',
-                    style: TextStyle(
-                        color: Colors.white,
-                        fontSize: fontSize * 0.8,
-                        // fontSize: fontSize,
-                        fontWeight: FontWeight.bold),
-                  ),
-                ),
-              ),
-              Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 5),
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        horizontal: 5,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.red,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Text(
-                        '10%',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: fontSize * 0.8,
-                            // fontSize: fontSize,
-                            fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 5),
-                    child: Text(
-                      '2800', // Replace with your actual total price
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.grey[400],
-                          decoration: TextDecoration.lineThrough),
-                    ),
-                  ),
-                  const Text(
-                    '2800', // Replace with your actual total price
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ],
-              ),
+              _buildPriceColumn(
+                  'Subtotal', '2000', screenSizeWidthOnly * 0.031),
+              _buildPriceColumn('Service', '175', screenSizeWidthOnly * 0.031),
+              _buildPriceColumn('Delivery', '175', screenSizeWidthOnly * 0.031),
+              _buildPriceColumn('Val', '200', screenSizeWidthOnly * 0.031),
             ],
+          ),
+        ),
+        Divider(color: Colors.grey.shade200, thickness: 1, height: 0),
+        Container(
+          // color: Colors.red,
+          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+          child: Align(
+            alignment: Alignment.center,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _buildStatusChip('Not paid', Colors.red, fontSize * 0.8),
+                Row(
+                  children: [
+                    _buildStatusChip('10%', Colors.red, fontSize * 0.8),
+                    _buildPriceText('2800', fontSize, isStrikeThrough: true),
+                    _buildPriceText('2800', fontSize),
+                  ],
+                ),
+              ],
+            ),
           ),
         ),
       ],
     );
   }
 
-  Widget _buildResponsiveRow() {
-    // Calculate responsive sizes
-    // double iconSize = screenSizeWidthOnly * 0.07;
-    // double containerHeight = sizeSmallScreenHeight * 0.09;
-    // double fontSize = screenSizeWidthOnly * 0.04;
+  Widget _buildPriceColumn(String label, String price, double fontSize) {
+    return Expanded(
+      child: Column(
+        children: [
+          Text(label,
+              style: TextStyle(
+                  color: Colors.grey.shade600,
+                  fontSize: fontSize * 0.8,
+                  fontWeight: FontWeight.w600)),
+          Text(price,
+              style: TextStyle(
+                  fontSize: fontSize * 0.8, fontWeight: FontWeight.w600)),
+        ],
+      ),
+    );
+  }
 
+  Widget _buildStatusChip(String text, Color color, double fontSize) {
+    return _buildChip(text, color, fontSize);
+  }
+
+  Widget _buildPriceText(String price, double fontSize,
+      {bool isStrikeThrough = false}) {
+    return _buildText(price, fontSize, isStrikeThrough: isStrikeThrough);
+  }
+
+  Widget _buildChip(String text, Color color, double fontSize) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 5),
+      decoration:
+          BoxDecoration(color: color, borderRadius: BorderRadius.circular(15)),
+      child: Text(text,
+          style: TextStyle(
+              color: Colors.white,
+              fontSize: fontSize,
+              fontWeight: FontWeight.bold)),
+    );
+  }
+
+  Widget _buildText(String text, double fontSize,
+      {bool isStrikeThrough = false}) {
+    return Padding(
+      padding: const EdgeInsets.only(right: 5),
+      child: Text(
+        text,
+        style: TextStyle(
+          fontSize: fontSize,
+          fontWeight: FontWeight.bold,
+          color: isStrikeThrough ? Colors.grey[400] : null,
+          decoration: isStrikeThrough ? TextDecoration.lineThrough : null,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildResponsiveRow() {
     return Row(
       children: [
-        Expanded(flex: 1, child: _buildIconContainer()),
+        Expanded(flex: 5, child: _buildIconContainer()),
         SizedBox(width: screenSizeWidthOnly * 0.01),
         Expanded(
-            flex: 2,
+            flex: 7,
             child: _buildInfoContainer(
                 containerHeight, fontSize, 'C10', '#464646')),
         SizedBox(width: screenSizeWidthOnly * 0.01),
         Expanded(
-            flex: 4, child: _buildDateTimeContainer(containerHeight, fontSize)),
+            flex: 16,
+            child: _buildDateTimeContainer(containerHeight, fontSize)),
         SizedBox(width: screenSizeWidthOnly * 0.01),
         Expanded(
-            flex: 1, child: _buildDeleteContainer(containerHeight, iconSize)),
+            flex: 5, child: _buildDeleteContainer(containerHeight, iconSize)),
       ],
     );
   }
@@ -405,16 +380,21 @@ class MiniScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             mainAxisSize: MainAxisSize.max,
             children: [
-              Text('Today', style: TextStyle(fontSize: fontSize)),
+              Text('Today',
+                  style: TextStyle(
+                      fontSize: fontSize * 0.8, fontWeight: FontWeight.w600)),
               Text('08:16',
-                  style: TextStyle(fontSize: fontSize),
+                  style: TextStyle(
+                      fontSize: fontSize * 0.8,
+                      fontWeight: FontWeight.w600,
+                      color: Colors.grey.shade700),
                   textAlign: TextAlign.end),
             ],
           ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Ready on', style: TextStyle(fontSize: fontSize * 0.8)),
+              Text('Ready on', style: TextStyle(fontSize: fontSize * 0.7)),
               SizedBox(width: height * 0.1),
               Container(
                 padding: const EdgeInsets.symmetric(
@@ -429,7 +409,7 @@ class MiniScreen extends StatelessWidget {
                 child: Text('50 Min',
                     style: TextStyle(
                         color: Colors.white,
-                        fontSize: fontSize * 0.8,
+                        fontSize: fontSize * 0.7,
                         fontWeight: FontWeight.bold)),
               )
             ],
@@ -459,17 +439,17 @@ class MiniScreen extends StatelessWidget {
   Widget _buildResponsiveRow2(double screenSizeWidth, double screenSizeHeight) {
     // Calculate responsive sizes
     double iconSize = screenSizeWidth * 0.07;
-    double containerHeight = screenSizeHeight * 0.09;
-    double fontSize = screenSizeWidth * 0.04;
+    double containerHeight = screenSizeHeight * 0.09 * 0.8;
+    double fontSize = screenSizeWidth * 0.03;
 
     return Row(
       children: [
         Expanded(
-            flex: 1,
+            flex: 5,
             child: _buildIconContainer2(containerHeight, iconSize, fontSize)),
         SizedBox(width: screenSizeWidth * 0.01),
         Expanded(
-            flex: 7,
+            flex: 28,
             child: _buildDateTimeContainer2(containerHeight, fontSize)),
         // SizedBox(width: screenSize.width * 0.01),
       ],
@@ -533,13 +513,16 @@ class MiniScreen extends StatelessWidget {
                     children: [
                       SvgPicture.asset(
                         'assets/icons/mini_screen/person1.svg',
+                        width: iconSize * 0.4,
+                        height: iconSize * 0.4,
                       ),
                       const SizedBox(width: 5),
-                      const Text(
+                      Text(
                         'Abdessamed bouazza',
                         style: TextStyle(
-                            fontSize: 15,
-                            color: Color.fromRGBO(155, 81, 224, 1)),
+                            fontSize: fontSize * 0.7,
+                            fontWeight: FontWeight.w800,
+                            color: const Color.fromRGBO(155, 81, 224, 1)),
                       ),
                     ],
                   ),
@@ -547,14 +530,20 @@ class MiniScreen extends StatelessWidget {
                     children: [
                       SvgPicture.asset(
                         'assets/icons/mini_screen/Vector-2.svg',
+                        width: iconSize * 0.4,
+                        height: iconSize * 0.4,
                       ),
                       const SizedBox(width: 8),
                       SvgPicture.asset(
                         'assets/icons/mini_screen/Vector-3.svg',
+                        width: iconSize * 0.4,
+                        height: iconSize * 0.4,
                       ),
                       const SizedBox(width: 8),
                       SvgPicture.asset(
                         'assets/icons/mini_screen/Vector-4.svg',
+                        width: iconSize * 0.4,
+                        height: iconSize * 0.4,
                       ),
                     ],
                   )
@@ -579,15 +568,17 @@ class MiniScreen extends StatelessWidget {
                 children: [
                   Text('By',
                       style: TextStyle(
-                          fontSize: fontSize * 0.8,
+                          fontSize: fontSize * 0.7,
                           fontWeight: FontWeight.w300,
                           color: Colors.grey)),
                   const SizedBox(width: 5),
                   Text('Abdesssmed bouazza',
                       style: TextStyle(
-                          fontSize: fontSize * 0.8,
-                          fontWeight: FontWeight.w500,
-                          color: Colors.grey[800])),
+                          fontSize: fontSize * 0.6,
+                          fontWeight: FontWeight.w600,
+                          // background: rgba(32, 33, 46, 1);
+
+                          color: Colors.grey)),
                 ],
               ),
             ),
@@ -608,8 +599,8 @@ class MiniScreen extends StatelessWidget {
       String? oldPrice,
       String? discount}) {
     // Calculate responsive sizes
-    double containerHeight = screenSizeHeight * 0.09;
-    double fontSize = screenSizeWidth * 0.04;
+    double containerHeight = screenSizeHeight * 0.06;
+    double fontSize = screenSizeWidth * 0.031;
 
     return Row(
       children: [
@@ -654,8 +645,8 @@ class MiniScreen extends StatelessWidget {
             LabeledBorder(
               bottomLabel: isPcs ? 'pcs' : 'kg',
               rightLabel: 'X',
-              height: height * 0.7,
-              width: height,
+              height: height * 0.7 + 1,
+              width: height + 10,
               child: Text(quantity,
                   style: TextStyle(
                       fontSize: fontSize, fontWeight: FontWeight.bold)),
@@ -677,7 +668,10 @@ class MiniScreen extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Text(subtitle),
+                      Text(subtitle,
+                          style: TextStyle(
+                              fontSize: fontSize * 0.8,
+                              color: Colors.grey.shade700)),
                       Row(
                         children: [
                           if (discount != null)
