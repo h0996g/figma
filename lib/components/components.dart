@@ -64,151 +64,110 @@ Row svgIconNavigationBar3(
 }
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
+  const CustomAppBar({super.key});
+
   @override
   Size get preferredSize => Size.fromHeight(
-        (Get.width * 0.7) * 0.1,
+        (Get.width * 0.75) * 0.09,
       );
 
   @override
   Widget build(BuildContext context) {
     return PreferredSize(
       preferredSize: preferredSize,
-      child: Container(
-        color: Colors.white,
-        child: SafeArea(
-          child: Center(
-            child: SizedBox(
-              width: Get.width *
-                  0.7, // Adjust the width to control the horizontal space
-              // height: 40, // Height of the app bar content
-              child: ListView(
-                scrollDirection: Axis.horizontal,
-                children: [
-                  // The following `MaterialButton` widgets are spaced equally
-
-                  MaterialButton(
-                    onPressed: () {},
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        svgIconNavigationBar2(
-                          path: 'assets/icons/main_screen/Vector-9.svg',
-                          color: Colors.black,
-                          width: iconSize * 0.8,
-                          height: iconSize * 0.8,
-                          fit: BoxFit.cover,
-                        ),
-                        Text(
-                          'Categories',
-                          style: TextStyle(
-                            fontSize: fontSize * 0.8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
+      child: Material(
+        elevation: 1,
+        child: Container(
+          color: Colors.white,
+          child: SafeArea(
+            child: Center(
+              child: SizedBox(
+                width: Get.width * 0.75,
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Expanded(
+                      child: ListView(
+                        scrollDirection: Axis.horizontal,
+                        children: [
+                          _buildButton(
+                            'assets/icons/main_screen/Vector-9.svg',
+                            'Categories',
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  MaterialButton(
-                    onPressed: () {},
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        svgIconNavigationBar2(
-                          path: 'assets/icons/main_screen/Vector-10.svg',
-                          color: Colors.black,
-                          width: iconSize * 0.8,
-                          height: iconSize * 0.8,
-                          fit: BoxFit.cover,
-                        ),
-                        Text(
-                          'Food',
-                          style: TextStyle(
-                            fontSize: fontSize * 0.8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
+                          _buildButton(
+                            'assets/icons/main_screen/Vector-10.svg',
+                            'Food',
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  MaterialButton(
-                    onPressed: () {},
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        svgIconNavigationBar2(
-                          path: 'assets/icons/main_screen/Vector-11.svg',
-                          color: Colors.black,
-                          width: iconSize * 0.8,
-                          height: iconSize * 0.8,
-                          fit: BoxFit.cover,
-                        ),
-                        Text(
-                          'Favoirites',
-                          style: TextStyle(
-                            fontSize: fontSize * 0.8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
+                          _buildButton(
+                            'assets/icons/main_screen/Vector-11.svg',
+                            'Favourites',
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  MaterialButton(
-                    onPressed: () {},
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        svgIconNavigationBar2(
-                          path: 'assets/icons/main_screen/Juice.svg',
-                          color: Colors.black,
-                          width: iconSize * 0.8,
-                          height: iconSize * 0.8,
-                          fit: BoxFit.cover,
-                        ),
-                        Text(
-                          'Drinks',
-                          style: TextStyle(
-                            fontSize: fontSize * 0.8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
+                          _buildButton(
+                            'assets/icons/main_screen/Juice.svg',
+                            'Drinks',
                           ),
-                        ),
-                      ],
-                    ),
-                  ),
-
-                  MaterialButton(
-                    onPressed: () {},
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        svgIconNavigationBar2(
-                          path: 'assets/icons/main_screen/Vector-13.svg',
-                          // path2: 'assets/icons/main_screen/Vector-1333.svg',
-                          color: Colors.black,
-                          width: iconSize * 0.8,
-                          height: iconSize * 0.8,
-                        ),
-                        Text(
-                          'Side Items',
-                          style: TextStyle(
-                            fontSize: fontSize * 0.8,
-                            fontWeight: FontWeight.w600,
-                            color: Colors.black,
+                          _buildButton(
+                            'assets/icons/main_screen/Vector-13.svg',
+                            'Side Items',
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                ],
+                    SizedBox(
+                      width: Get.width * 0.17, // Adjust the width as needed
+                      child: TextField(
+                        decoration: InputDecoration(
+                          hintText: 'Search Products ...',
+                          hintStyle: TextStyle(
+                            // color: Colors.grey,
+                            color: Colors.black,
+                            fontSize: fontSize * 0.8,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10),
+                            borderSide: BorderSide.none,
+                          ),
+                          filled: true,
+                          fillColor: Colors.grey[200],
+                          contentPadding: const EdgeInsets.symmetric(
+                              vertical: 0, horizontal: 10),
+                          suffixIcon: const Icon(Icons.search),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildButton(String iconPath, String label) {
+    return MaterialButton(
+      onPressed: () {},
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          svgIconNavigationBar2(
+            path: iconPath,
+            color: Colors.black,
+            width: iconSize * 0.8,
+            height: iconSize * 0.8,
+            fit: BoxFit.cover,
+          ),
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: fontSize * 0.8,
+              fontWeight: FontWeight.w600,
+              color: Colors.black,
+            ),
+          ),
+        ],
       ),
     );
   }
