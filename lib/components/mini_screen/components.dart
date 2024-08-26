@@ -3,11 +3,12 @@ import 'package:figma/const_size.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Container navigationBarSmallScreen() {
-  double spaceSizedBoxNav = Get.height * 0.02;
+Container navigationBarSmallScreen(
+    double iconSize, double fontSize, double mediaWidth, double mediaHeight) {
+  double spaceSizedBoxNav = mediaHeight * 0.02;
   return Container(
     color: Colors.white,
-    width: (Get.width * 0.25) * 0.13,
+    width: (mediaWidth * 0.25) * 0.13,
     // Removed fixed width, as it is now defined in the parent Row
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,

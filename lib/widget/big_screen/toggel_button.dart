@@ -14,9 +14,16 @@ class _MyToggleButtonWidgetState extends State<MyToggleButtonWidget> {
 
   @override
   Widget build(BuildContext context) {
+    double mediaHeight = MediaQuery.of(context).size.height;
+    double screenSizeWidthOnly1 = MediaQuery.of(context).size.width * 0.3 - 40;
+
+    double iconSize = screenSizeWidthOnly1 * 0.07;
+    double containerHeight = MediaQuery.of(context).size.height * 0.09 * 0.8;
+    double fontSize = screenSizeWidthOnly1 * 0.04;
+
     return Center(
       child: Container(
-        height: Get.height * 0.07,
+        height: mediaHeight * 0.07,
         decoration: BoxDecoration(
           color: Colors.white,
           borderRadius: BorderRadius.circular(5),
@@ -26,14 +33,14 @@ class _MyToggleButtonWidgetState extends State<MyToggleButtonWidget> {
           child: Row(
             // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
-              buildCustomToggleButton('Daily Breakfast', 0),
-              buildCustomToggleButton('Special Offers', 1),
-              buildCustomToggleButton('Soup And Appetizers', 2),
-              buildCustomToggleButton('Salad', 3),
-              buildCustomToggleButton('Grills Meat By Kilo', 4),
-              buildCustomToggleButton('Grills Meat Meals', 5),
-              buildCustomToggleButton('Smoked Meat Meals', 6),
-              buildCustomToggleButton('Grilled Chicken Meals', 7),
+              buildCustomToggleButton('Daily Breakfast', 0, fontSize),
+              buildCustomToggleButton('Special Offers', 1, fontSize),
+              buildCustomToggleButton('Soup And Appetizers', 2, fontSize),
+              buildCustomToggleButton('Salad', 3, fontSize),
+              buildCustomToggleButton('Grills Meat By Kilo', 4, fontSize),
+              buildCustomToggleButton('Grills Meat Meals', 5, fontSize),
+              buildCustomToggleButton('Smoked Meat Meals', 6, fontSize),
+              buildCustomToggleButton('Grilled Chicken Meals', 7, fontSize),
             ],
           ),
         ),
@@ -41,7 +48,7 @@ class _MyToggleButtonWidgetState extends State<MyToggleButtonWidget> {
     );
   }
 
-  Widget buildCustomToggleButton(String title, int index) {
+  Widget buildCustomToggleButton(String title, int index, double fontSize) {
     bool isSelected = selectedIndex == index;
     return GestureDetector(
       onTap: () {

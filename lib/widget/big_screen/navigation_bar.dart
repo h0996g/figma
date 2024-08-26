@@ -1,12 +1,12 @@
 import 'package:figma/components/components.dart';
-import 'package:figma/const_size.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Container navigationBarMainScreen() {
+Container navigationBarMainScreen(
+    double iconSize, double fontSize, double mediaWidth, double mediaHeight) {
   return Container(
     // color: Colors.white,
-    width: (Get.width * 0.75) * 0.08,
+    width: (mediaWidth * 0.75) * 0.08,
     decoration: const BoxDecoration(
       color: Colors.white,
       boxShadow: [
@@ -30,7 +30,7 @@ Container navigationBarMainScreen() {
                 svgIconNavigationBar(
                     path: 'assets/icons/main_screen/Frame 17.svg',
                     fit: BoxFit.cover,
-                    height: Get.height * 0.088 - 10,
+                    height: mediaHeight * 0.088 - 10,
                     color: Colors.black),
                 const SizedBox(height: 20),
                 MaterialButton(

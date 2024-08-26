@@ -17,6 +17,12 @@ class MiniScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double mediaHeight = MediaQuery.of(context).size.height;
+    double screenSizeWidthOnly1 = MediaQuery.of(context).size.width * 0.3 - 40;
+
+    double iconSize = screenSizeWidthOnly1 * 0.07;
+    double containerHeight = MediaQuery.of(context).size.height * 0.09 * 0.8;
+    double fontSize = screenSizeWidthOnly1 * 0.04;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -28,7 +34,8 @@ class MiniScreen extends StatelessWidget {
                 mainAxisSize: MainAxisSize.max,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  _buildResponsiveRow(),
+                  _buildResponsiveRow(screenSizeWidthOnly1, iconSize,
+                      containerHeight, fontSize),
                 ],
               ),
             ),
@@ -40,7 +47,7 @@ class MiniScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildResponsiveRow2(
-                      screenSizeWidthOnly, sizeSmallScreenHeight),
+                      screenSizeWidthOnly1, sizeSmallScreenHeight),
                 ],
               ),
             ),
@@ -54,7 +61,7 @@ class MiniScreen extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   final item = mealItems[index];
-                  return listSlidable(item);
+                  return listSlidable(item, screenSizeWidthOnly1, iconSize);
                 },
               ),
             ),
@@ -64,15 +71,16 @@ class MiniScreen extends StatelessWidget {
       bottomNavigationBar: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
-          _buildTotalPriceWidget(
-              screenSizeWidthOnly, (screenSizeWidthOnly) * 0.04),
-          bottomNavBar(context),
+          _buildTotalPriceWidget(screenSizeWidthOnly1,
+              (screenSizeWidthOnly1) * 0.04, screenSizeWidthOnly1),
+          bottomNavBar(context, mediaHeight),
         ],
       ),
     );
   }
 
-  Slidable listSlidable(MealItem item) {
+  Slidable listSlidable(
+      MealItem item, double screenSizeWidthOnly1, double iconSize) {
     return Slidable(
       startActionPane: ActionPane(
         motion: const BehindMotion(),
@@ -100,18 +108,18 @@ class MiniScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _buildCustomSlidableAction(
-                    'assets/icons/mini_screen/slide-1.svg'),
+                    'assets/icons/mini_screen/slide-1.svg', iconSize),
                 _buildCustomSlidableAction(
-                    'assets/icons/mini_screen/slide-2.svg'),
+                    'assets/icons/mini_screen/slide-2.svg', iconSize),
                 _buildCustomSlidableAction(
-                    'assets/icons/mini_screen/slide-3.svg'),
+                    'assets/icons/mini_screen/slide-3.svg', iconSize),
               ],
             ),
           ),
         ],
       ),
       child: _buildResponsiveRow3(
-        screenSizeWidth: screenSizeWidthOnly,
+        screenSizeWidthOnly1: screenSizeWidthOnly1,
         screenSizeHeight: sizeSmallScreenHeight,
         quantity: item.quantity,
         title: item.title,
@@ -124,7 +132,7 @@ class MiniScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildCustomSlidableAction(String assetPath) {
+  Widget _buildCustomSlidableAction(String assetPath, double iconSize) {
     return CustomSlidableAction(
       onPressed: (context) {
         // Your action here
@@ -140,9 +148,9 @@ class MiniScreen extends StatelessWidget {
     );
   }
 
-  Widget bottomNavBar(BuildContext context) {
+  Widget bottomNavBar(BuildContext context, double mediaHeight) {
     return SizedBox(
-      height: Get.height * 0.1, // Set the height to your desired value
+      height: mediaHeight * 0.1, // Set the height to your desired value
       child: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
@@ -171,7 +179,8 @@ class MiniScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildTotalPriceWidget(double screenWidth, double fontSize) {
+  Widget _buildTotalPriceWidget(
+      double screenWidth, double fontSize, double screenSizeWidthOnly1) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -181,10 +190,11 @@ class MiniScreen extends StatelessWidget {
           child: Row(
             children: [
               _buildPriceColumn(
-                  'Subtotal', '2000', screenSizeWidthOnly * 0.031),
-              _buildPriceColumn('Service', '175', screenSizeWidthOnly * 0.031),
-              _buildPriceColumn('Delivery', '175', screenSizeWidthOnly * 0.031),
-              _buildPriceColumn('Val', '200', screenSizeWidthOnly * 0.031),
+                  'Subtotal', '2000', screenSizeWidthOnly1 * 0.031),
+              _buildPriceColumn('Service', '175', screenSizeWidthOnly1 * 0.031),
+              _buildPriceColumn(
+                  'Delivery', '175', screenSizeWidthOnly1 * 0.031),
+              _buildPriceColumn('Val', '200', screenSizeWidthOnly1 * 0.031),
             ],
           ),
         ),
@@ -269,27 +279,29 @@ class MiniScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildResponsiveRow() {
+  Widget _buildResponsiveRow(double screenSizeWidthOnly1, double iconSize,
+      double containerHeight, double fontSize) {
     return Row(
       children: [
-        Expanded(flex: 4, child: _buildIconContainer()),
-        SizedBox(width: screenSizeWidthOnly * 0.01),
+        Expanded(
+            flex: 4, child: _buildIconContainer(containerHeight, iconSize)),
+        SizedBox(width: screenSizeWidthOnly1 * 0.01),
         Expanded(
             flex: 7,
             child: _buildInfoContainer(
                 containerHeight, fontSize, 'C10', '#464646')),
-        SizedBox(width: screenSizeWidthOnly * 0.01),
+        SizedBox(width: screenSizeWidthOnly1 * 0.01),
         Expanded(
             flex: 16,
             child: _buildDateTimeContainer(containerHeight, fontSize)),
-        SizedBox(width: screenSizeWidthOnly * 0.01),
+        SizedBox(width: screenSizeWidthOnly1 * 0.01),
         Expanded(
             flex: 4, child: _buildDeleteContainer(containerHeight, iconSize)),
       ],
     );
   }
 
-  Widget _buildIconContainer() {
+  Widget _buildIconContainer(double containerHeight, double iconSize) {
     return Container(
       height: containerHeight,
       width: containerHeight,
@@ -420,7 +432,8 @@ class MiniScreen extends StatelessWidget {
         SizedBox(width: screenSizeWidth * 0.01),
         Expanded(
             flex: 28,
-            child: _buildDateTimeContainer2(containerHeight, fontSize)),
+            child:
+                _buildDateTimeContainer2(containerHeight, fontSize, iconSize)),
         // SizedBox(width: screenSize.width * 0.01),
       ],
     );
@@ -453,7 +466,8 @@ class MiniScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildDateTimeContainer2(double height, double fontSize) {
+  Widget _buildDateTimeContainer2(
+      double height, double fontSize, double iconSize) {
     return Container(
       height: height,
       width: double.infinity,
@@ -559,7 +573,7 @@ class MiniScreen extends StatelessWidget {
   }
 
   Widget _buildResponsiveRow3(
-      {required double screenSizeWidth,
+      {required double screenSizeWidthOnly1,
       required double screenSizeHeight,
       required String quantity,
       required String title,
@@ -570,7 +584,7 @@ class MiniScreen extends StatelessWidget {
       String? discount}) {
     // Calculate responsive sizes
     double containerHeight = screenSizeHeight * 0.06;
-    double fontSize = screenSizeWidth * 0.031;
+    double fontSize = screenSizeWidthOnly1 * 0.031;
 
     return Row(
       children: [

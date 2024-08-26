@@ -1,36 +1,35 @@
-import 'package:figma/components/components.dart';
-import 'package:figma/const_size.dart';
 import 'package:figma/model/product.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-Widget itemAppBar(String iconPath, String label) {
-  return MaterialButton(
-    onPressed: () {},
-    child: Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        svgIconNavigationBar2(
-          path: iconPath,
-          color: Colors.black,
-          width: iconSize * 0.8,
-          height: iconSize * 0.8,
-          fit: BoxFit.cover,
-        ),
-        Text(
-          label,
-          style: TextStyle(
-            fontSize: fontSize * 0.8,
-            fontWeight: FontWeight.w600,
-            color: Colors.black,
-          ),
-        ),
-      ],
-    ),
-  );
-}
+// Widget itemAppBar(
+//     String iconPath, String label, double iconSize, double fontSize) {
+//   return MaterialButton(
+//     onPressed: () {},
+//     child: Column(
+//       mainAxisSize: MainAxisSize.min,
+//       children: [
+//         svgIconNavigationBar2(
+//           path: iconPath,
+//           color: Colors.black,
+//           width: iconSize * 0.8,
+//           height: iconSize * 0.8,
+//           fit: BoxFit.cover,
+//         ),
+//         Text(
+//           label,
+//           style: TextStyle(
+//             fontSize: fontSize * 0.8,
+//             fontWeight: FontWeight.w600,
+//             color: Colors.black,
+//           ),
+//         ),
+//       ],
+//     ),
+//   );
+// }
 
-Widget buildProductCard(Product product) {
+Widget buildProductCard(Product product, double fontSize, double mediaHeight) {
   return Card(
     color: Colors.white,
     shape: RoundedRectangleBorder(
@@ -53,7 +52,7 @@ Widget buildProductCard(Product product) {
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: SizedBox(
-            height: Get.height * 0.1,
+            height: mediaHeight * 0.1,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,

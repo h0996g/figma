@@ -6,17 +6,24 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 // CustomAppBar
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  CustomAppBar({super.key});
-
+  CustomAppBar({super.key, required this.mediaWidth});
+  final double mediaWidth;
   final MainController controller = Get.put(MainController());
 
   @override
   Size get preferredSize => Size.fromHeight(
-        (Get.width * 0.75) * 0.07,
+        (mediaWidth * 0.75) * 0.07,
       );
 
   @override
   Widget build(BuildContext context) {
+    // double mediawidth = MediaQuery.of(context).size.width;
+    double screenSizeWidthOnly1 = MediaQuery.of(context).size.width * 0.3 - 40;
+
+    double iconSize = screenSizeWidthOnly1 * 0.07;
+    double containerHeight = MediaQuery.of(context).size.height * 0.09 * 0.8;
+    double fontSize = screenSizeWidthOnly1 * 0.04;
+
     return PreferredSize(
       preferredSize: preferredSize,
       child: Material(
@@ -26,7 +33,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
           child: SafeArea(
             child: Center(
               child: SizedBox(
-                width: Get.width * 0.75,
+                width: mediaWidth * 0.75,
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
@@ -37,24 +44,38 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                           _buildItemAppBar(
                               0,
                               'assets/icons/main_screen/Vector-9.svg',
-                              'Categories'),
-                          _buildItemAppBar(1,
-                              'assets/icons/main_screen/Vector-10.svg', 'Food'),
+                              'Categories',
+                              fontSize,
+                              mediaWidth),
+                          _buildItemAppBar(
+                              1,
+                              'assets/icons/main_screen/Vector-10.svg',
+                              'Food',
+                              fontSize,
+                              mediaWidth),
                           _buildItemAppBar(
                               2,
                               'assets/icons/main_screen/Vector-11.svg',
-                              'Favourites'),
-                          _buildItemAppBar(3,
-                              'assets/icons/main_screen/Juice.svg', 'Drinks'),
+                              'Favourites',
+                              fontSize,
+                              mediaWidth),
+                          _buildItemAppBar(
+                              3,
+                              'assets/icons/main_screen/Juice.svg',
+                              'Drinks',
+                              fontSize,
+                              mediaWidth),
                           _buildItemAppBar(
                               4,
                               'assets/icons/main_screen/Vector-13.svg',
-                              'Side Items'),
+                              'Side Items',
+                              fontSize,
+                              mediaWidth),
                         ],
                       ),
                     ),
                     SizedBox(
-                      width: Get.width * 0.17,
+                      width: mediaWidth * 0.17,
                       child: TextFormField(
                         decoration: InputDecoration(
                           hintText: 'Search Products ...',
@@ -85,13 +106,14 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
     );
   }
 
-  Widget _buildItemAppBar(int index, String iconPath, String label) {
+  Widget _buildItemAppBar(int index, String iconPath, String label,
+      double fontSize, double mediaWidth) {
     return GetX<MainController>(
       builder: (controller) => MaterialButton(
         padding: EdgeInsets.zero,
         onPressed: () => controller.changeIndex(index),
         child: Container(
-          width: Get.width * 0.75 / 10,
+          width: mediaWidth * 0.75 / 10,
           // height: 20,
           // padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
           decoration: BoxDecoration(

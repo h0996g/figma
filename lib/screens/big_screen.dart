@@ -9,9 +9,12 @@ class BigScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double mediaHeight = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Colors.grey[200],
-      appBar: CustomAppBar(),
+      appBar: CustomAppBar(
+        mediaWidth: MediaQuery.of(context).size.width,
+      ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
         child: Column(
@@ -25,7 +28,7 @@ class BigScreen extends StatelessWidget {
               ),
               padding: const EdgeInsets.symmetric(horizontal: 10),
               // color: Colors.white,
-              height: Get.height * 0.055,
+              height: mediaHeight * 0.055,
               child: const MyToggleButtonWidget(),
             ),
             const SizedBox(height: 5),
