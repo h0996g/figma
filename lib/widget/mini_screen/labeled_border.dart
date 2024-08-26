@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class LabeledBorder extends StatelessWidget {
+  final bool isFrezze;
   final String rightLabel;
   final String bottomLabel;
   final Widget child;
@@ -9,6 +10,7 @@ class LabeledBorder extends StatelessWidget {
 
   const LabeledBorder({
     super.key,
+    required this.isFrezze,
     required this.rightLabel,
     required this.bottomLabel,
     required this.child,
@@ -26,7 +28,7 @@ class LabeledBorder extends StatelessWidget {
           height: height, // Adjust as needed
           decoration: BoxDecoration(
             border: Border.all(
-              color: Colors.orange,
+              color: isFrezze ? Colors.blue : Colors.orange,
             ),
             borderRadius: BorderRadius.circular(3),
             // borderRadius:
@@ -44,7 +46,9 @@ class LabeledBorder extends StatelessWidget {
               quarterTurns: 1,
               child: Container(
                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                color: Theme.of(context).scaffoldBackgroundColor,
+                color: isFrezze
+                    ? const Color.fromRGBO(224, 236, 252, 1)
+                    : Colors.grey[100]!.withOpacity(0.7),
                 child: Text(
                   rightLabel,
                   style: const TextStyle(fontSize: 6),
@@ -61,7 +65,9 @@ class LabeledBorder extends StatelessWidget {
           child: Center(
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-              color: Theme.of(context).scaffoldBackgroundColor,
+              color: isFrezze
+                  ? const Color.fromRGBO(224, 236, 252, 1)
+                  : Colors.grey[100]!.withOpacity(0.7),
               child: Text(
                 bottomLabel,
                 style: const TextStyle(fontSize: 7),

@@ -106,50 +106,54 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget _buildItemAppBar(int index, String iconPath, String label,
       double fontSize, double mediaWidth) {
     return GetX<MainController>(
-      builder: (controller) => MaterialButton(
-        padding: EdgeInsets.zero,
-        onPressed: () => controller.changeIndex(index),
-        child: Container(
-          width: mediaWidth * 0.75 / 10,
-          // height: 20,
-          // padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
-          decoration: BoxDecoration(
-            color: controller.currentIndexBarBig == index
-                ? Colors.orange.withOpacity(
-                    0.1) // Add background color for the selected item
-                : Colors.transparent,
-            borderRadius: controller.currentIndexBarBig == index
-                ? BorderRadius.circular(
-                    8) // Add rounded corners for the selected item
-                : BorderRadius.zero,
-            border: Border.all(
+      builder: (controller) => Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 3, vertical: 2),
+        child: GestureDetector(
+          // padding: EdgeInsets.zero,
+          onTap: () => controller.changeIndex(index),
+          child: Container(
+            width: mediaWidth * 0.75 / 10,
+            // height: 20,
+            // padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+            decoration: BoxDecoration(
               color: controller.currentIndexBarBig == index
-                  ? Colors.orange // Border color for the selected item
+                  ? Colors.orange.withOpacity(
+                      0.1) // Add background color for the selected item
                   : Colors.transparent,
-            ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SvgPicture.asset(
-                iconPath,
+              borderRadius: controller.currentIndexBarBig == index
+                  ? BorderRadius.circular(
+                      8) // Add rounded corners for the selected item
+                  : BorderRadius.zero,
+              border: Border.all(
                 color: controller.currentIndexBarBig == index
-                    ? Colors.orange // Changed to orange
-                    : Colors.black, // Change non-selected icons to black
-                width: 25,
-                height: 25,
+                    ? Colors.orange // Border color for the selected item
+                    : Colors.transparent,
               ),
-              SizedBox(height: 5), // Add spacing between the icon and the label
-              Text(
-                label,
-                style: TextStyle(
-                    color: controller.currentIndexBarBig == index
-                        ? Colors.orange // Changed to orange
-                        : Colors.black, // Change non-selected text to black
-                    fontWeight: FontWeight.bold,
-                    fontSize: fontSize * 0.8),
-              ),
-            ],
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                SvgPicture.asset(
+                  iconPath,
+                  color: controller.currentIndexBarBig == index
+                      ? Colors.orange // Changed to orange
+                      : Colors.black, // Change non-selected icons to black
+                  width: 25,
+                  height: 25,
+                ),
+                SizedBox(
+                    height: 5), // Add spacing between the icon and the label
+                Text(
+                  label,
+                  style: TextStyle(
+                      color: controller.currentIndexBarBig == index
+                          ? Colors.orange // Changed to orange
+                          : Colors.black, // Change non-selected text to black
+                      fontWeight: FontWeight.bold,
+                      fontSize: fontSize * 0.8),
+                ),
+              ],
+            ),
           ),
         ),
       ),

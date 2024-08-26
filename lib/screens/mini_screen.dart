@@ -1,9 +1,11 @@
-import 'package:figma/components/const.dart';
+import 'package:figma/controllers/main_controller.dart';
 import 'package:figma/model/list_item.dart';
 import 'package:figma/widget/mini_screen/labeled_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:get/get_state_manager/get_state_manager.dart';
 
 class MiniScreen extends StatelessWidget {
   final double sizeSmallScreenWidth;
@@ -15,6 +17,7 @@ class MiniScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    MainController mainController = Get.find<MainController>();
     double mediaHeight = MediaQuery.of(context).size.height;
     double screenSizeWidthOnly1 = MediaQuery.of(context).size.width * 0.3 - 40;
 
@@ -49,19 +52,29 @@ class MiniScreen extends StatelessWidget {
                 ],
               ),
             ),
-            Card(
-              color: Colors.white,
-              elevation: 0,
-              child: ListView.separated(
-                separatorBuilder: (context, index) => const SizedBox(height: 5),
-                itemCount: mealItems.length,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  final item = mealItems[index];
-                  return listSlidable(item, screenSizeWidthOnly1, iconSize);
-                },
-              ),
+            GetX<MainController>(
+              // init: MainController,
+              builder: (DisposableInterface controller) {
+                return Card(
+                  color: Colors.white,
+                  elevation: 0,
+                  child: ListView.separated(
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(height: 5),
+                    itemCount: mainController.mealItems.length,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      final item = mainController.mealItems[index];
+                      if (mainController.loadingGetItem.isTrue) {
+                        return const Center(child: CircularProgressIndicator());
+                      }
+                      return listSlidable(
+                          item, screenSizeWidthOnly1, iconSize, mainController);
+                    },
+                  ),
+                );
+              },
             ),
           ],
         ),
@@ -77,8 +90,8 @@ class MiniScreen extends StatelessWidget {
     );
   }
 
-  Slidable listSlidable(
-      MealItem item, double screenSizeWidthOnly1, double iconSize) {
+  Slidable listSlidable(MealItem item, double screenSizeWidthOnly1,
+      double iconSize, MainController mainController) {
     return Slidable(
       startActionPane: ActionPane(
         motion: const BehindMotion(),
@@ -87,7 +100,9 @@ class MiniScreen extends StatelessWidget {
             autoClose: true,
             borderRadius: const BorderRadius.all(Radius.circular(3)),
 
-            onPressed: (context) {},
+            onPressed: (context) {
+              mainController.deleteItem(id: item.id!);
+            },
             foregroundColor: Colors.white,
             backgroundColor: const Color.fromRGBO(235, 87, 87, 1),
             // background: rgba(155, 81, 224, 1);
@@ -105,12 +120,59 @@ class MiniScreen extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+                item.isFrezze == true
+                    ?
+                    // _buildCustomSlidableAction(
+                    //     'assets/icons/mini_screen/freezOf.svg',
+                    //     iconSize,
+                    //     item,
+                    //     mainController)
+                    CustomSlidableAction(
+                        onPressed: (context) {
+                          // Your action here
+                          mainController.updateFrezzeStatus(
+                              item.id!, !item.isFrezze!);
+                        },
+                        padding: EdgeInsets.zero,
+                        backgroundColor: const Color.fromRGBO(155, 81, 224, 1),
+                        child: SvgPicture.asset(
+                          'assets/icons/mini_screen/freezOf.svg',
+                          fit: BoxFit.contain,
+                          width: iconSize * 0.7,
+                          height: iconSize * 0.7,
+                        ),
+                      )
+                    : CustomSlidableAction(
+                        onPressed: (context) {
+                          // Your action here
+                          mainController.updateFrezzeStatus(
+                              item.id!, !item.isFrezze!);
+                        },
+                        padding: EdgeInsets.zero,
+                        backgroundColor: const Color.fromRGBO(155, 81, 224, 1),
+                        child: SvgPicture.asset(
+                          'assets/icons/mini_screen/slide-1.svg',
+                          fit: BoxFit.contain,
+                          width: iconSize * 0.7,
+                          height: iconSize * 0.7,
+                        ),
+                      ),
+
+                // _buildCustomSlidableAction(
+                //     'assets/icons/mini_screen/slide-1.svg',
+                //     iconSize,
+                //     item,
+                //     mainController),
                 _buildCustomSlidableAction(
-                    'assets/icons/mini_screen/slide-1.svg', iconSize),
+                    'assets/icons/mini_screen/slide-2.svg',
+                    iconSize,
+                    item,
+                    mainController),
                 _buildCustomSlidableAction(
-                    'assets/icons/mini_screen/slide-2.svg', iconSize),
-                _buildCustomSlidableAction(
-                    'assets/icons/mini_screen/slide-3.svg', iconSize),
+                    'assets/icons/mini_screen/slide-3.svg',
+                    iconSize,
+                    item,
+                    mainController),
               ],
             ),
           ),
@@ -119,21 +181,24 @@ class MiniScreen extends StatelessWidget {
       child: _buildResponsiveRow3(
         screenSizeWidthOnly1: screenSizeWidthOnly1,
         screenSizeHeight: sizeSmallScreenHeight,
-        quantity: item.quantity,
-        title: item.title,
-        subtitle: item.subtitle,
-        isPcs: item.isPcs,
-        price: item.price,
+        quantity: item.quantity!,
+        title: item.name,
+        subtitle: item.subtitle!,
+        isPcs: item.isPcs!,
+        price: item.price!,
         oldPrice: item.oldPrice,
         discount: item.discount,
+        isFrezze: item.isFrezze,
       ),
     );
   }
 
-  Widget _buildCustomSlidableAction(String assetPath, double iconSize) {
+  Widget _buildCustomSlidableAction(String assetPath, double iconSize,
+      MealItem item, MainController mainController) {
     return CustomSlidableAction(
       onPressed: (context) {
         // Your action here
+        mainController.updateFrezzeStatus(item.id!, true);
       },
       padding: EdgeInsets.zero,
       backgroundColor: const Color.fromRGBO(155, 81, 224, 1),
@@ -147,29 +212,48 @@ class MiniScreen extends StatelessWidget {
   }
 
   Widget bottomNavBar(BuildContext context, double mediaHeight) {
-    return SizedBox(
-      height: mediaHeight * 0.1, // Set the height to your desired value
-      child: BottomNavigationBar(
-        showSelectedLabels: false,
-        showUnselectedLabels: false,
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: Colors.white,
-        items: [
-          _buildNavItem('assets/icons/mini_screen/Vector-5.svg'),
-          _buildNavItem('assets/icons/mini_screen/Vector-6.svg'),
-          _buildNavItem('assets/icons/mini_screen/Vector-7.svg'),
-          _buildNavItem('assets/icons/mini_screen/Vector-8.svg',
-              color: Colors.grey.shade400),
-        ],
-      ),
-    );
+    // Get the BottomNavController instance
+    final MainController navController = Get.put(MainController());
+
+    return Obx(() => SizedBox(
+          height: mediaHeight * 0.12, // Set the height to your desired value
+          child: BottomNavigationBar(
+            currentIndex: navController.selectedIndex.value,
+            onTap: (index) {
+              navController.changeIndex2(index);
+            },
+            showSelectedLabels: false,
+            showUnselectedLabels: false,
+            type: BottomNavigationBarType.fixed,
+            backgroundColor: Colors.white,
+            items: [
+              _buildNavItem(
+                'assets/icons/mini_screen/Vector-5.svg',
+                isSelected: navController.selectedIndex.value == 0,
+              ),
+              _buildNavItem(
+                'assets/icons/mini_screen/Vector-6.svg',
+                isSelected: navController.selectedIndex.value == 1,
+              ),
+              _buildNavItem(
+                'assets/icons/mini_screen/Vector-7.svg',
+                isSelected: navController.selectedIndex.value == 2,
+              ),
+              _buildNavItem(
+                'assets/icons/mini_screen/Vector-8.svg',
+                isSelected: navController.selectedIndex.value == 3,
+              ),
+            ],
+          ),
+        ));
   }
 
-  BottomNavigationBarItem _buildNavItem(String assetPath, {Color? color}) {
+  BottomNavigationBarItem _buildNavItem(String assetPath,
+      {bool isSelected = false}) {
     return BottomNavigationBarItem(
       icon: SvgPicture.asset(
         assetPath,
-        color: color,
+        color: isSelected ? Colors.orange : Colors.grey.shade400,
         width: 15,
         height: 15,
       ),
@@ -285,12 +369,12 @@ class MiniScreen extends StatelessWidget {
             flex: 4, child: _buildIconContainer(containerHeight, iconSize)),
         SizedBox(width: screenSizeWidthOnly1 * 0.01),
         Expanded(
-            flex: 7,
+            flex: 8,
             child: _buildInfoContainer(
                 containerHeight, fontSize, 'C10', '#464646')),
         SizedBox(width: screenSizeWidthOnly1 * 0.01),
         Expanded(
-            flex: 16,
+            flex: 17,
             child: _buildDateTimeContainer(containerHeight, fontSize)),
         SizedBox(width: screenSizeWidthOnly1 * 0.01),
         Expanded(
@@ -502,7 +586,7 @@ class MiniScreen extends StatelessWidget {
                       Text(
                         'Abdessamed bouazza',
                         style: TextStyle(
-                            fontSize: fontSize * 0.7,
+                            fontSize: fontSize * 0.8,
                             fontWeight: FontWeight.w800,
                             color: const Color.fromRGBO(155, 81, 224, 1)),
                       ),
@@ -556,7 +640,7 @@ class MiniScreen extends StatelessWidget {
                   const SizedBox(width: 5),
                   Text('Abdesssmed bouazza',
                       style: TextStyle(
-                          fontSize: fontSize * 0.6,
+                          fontSize: fontSize * 0.7,
                           fontWeight: FontWeight.w600,
                           // background: rgba(32, 33, 46, 1);
 
@@ -570,16 +654,18 @@ class MiniScreen extends StatelessWidget {
     );
   }
 
-  Widget _buildResponsiveRow3(
-      {required double screenSizeWidthOnly1,
-      required double screenSizeHeight,
-      required String quantity,
-      required String title,
-      required String subtitle,
-      required String price,
-      required bool isPcs,
-      String? oldPrice,
-      String? discount}) {
+  Widget _buildResponsiveRow3({
+    required double screenSizeWidthOnly1,
+    required double screenSizeHeight,
+    required String quantity,
+    required String title,
+    required String subtitle,
+    required String price,
+    required bool isPcs,
+    String? oldPrice,
+    String? discount,
+    bool? isFrezze,
+  }) {
     // Calculate responsive sizes
     double containerHeight = screenSizeHeight * 0.06;
     double fontSize = screenSizeWidthOnly1 * 0.031;
@@ -587,17 +673,8 @@ class MiniScreen extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-            child: _buildDateTimeContainer3(
-          containerHeight,
-          fontSize,
-          quantity,
-          title,
-          subtitle,
-          price,
-          isPcs,
-          oldPrice,
-          discount,
-        )),
+            child: _buildDateTimeContainer3(containerHeight, fontSize, quantity,
+                title, subtitle, price, isPcs, oldPrice, discount, isFrezze)),
       ],
     );
   }
@@ -611,20 +688,25 @@ class MiniScreen extends StatelessWidget {
       String price,
       bool isPcs,
       String? oldPrice,
-      String? discount) {
+      String? discount,
+      bool? isFrezze) {
     return Container(
         height: height,
         width: double.infinity,
         decoration: BoxDecoration(
-          color: Colors.grey[100]!.withOpacity(0.7),
+          color: isFrezze != true
+              ? Colors.grey[100]!.withOpacity(0.7)
+              : const Color.fromRGBO(224, 236, 252, 1),
           borderRadius: BorderRadius.circular(5),
         ),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             const SizedBox(
               width: 10,
             ),
             LabeledBorder(
+              isFrezze: isFrezze!,
               bottomLabel: isPcs ? 'pcs' : 'kg',
               rightLabel: 'X',
               height: height * 0.7 + 1,
@@ -636,8 +718,8 @@ class MiniScreen extends StatelessWidget {
             SizedBox(width: height * 0.2),
             Expanded(
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center, // Changed this
-                crossAxisAlignment: CrossAxisAlignment.center, // Added this
+                mainAxisAlignment: MainAxisAlignment.start, // Changed this
+                crossAxisAlignment: CrossAxisAlignment.start, // Added this
                 children: [
                   Text(
                     title,

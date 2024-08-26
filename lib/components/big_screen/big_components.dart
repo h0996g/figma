@@ -1,3 +1,4 @@
+import 'package:figma/model/list_item.dart';
 import 'package:figma/model/product.dart';
 import 'package:flutter/material.dart';
 
@@ -28,7 +29,7 @@ import 'package:flutter/material.dart';
 //   );
 // }
 
-Widget buildProductCard(Product product, double fontSize, double mediaHeight) {
+Widget buildProductCard(MealItem product, double fontSize, double mediaHeight) {
   return Card(
     color: Colors.white,
     shape: RoundedRectangleBorder(
@@ -42,7 +43,7 @@ Widget buildProductCard(Product product, double fontSize, double mediaHeight) {
           child: ClipRRect(
             borderRadius: const BorderRadius.vertical(top: Radius.circular(10)),
             child: Image.asset(
-              product.imageUrl,
+              product.imageUrl!,
               fit: BoxFit.cover,
               width: double.infinity,
             ),
@@ -57,7 +58,7 @@ Widget buildProductCard(Product product, double fontSize, double mediaHeight) {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text(
-                  product.name,
+                  product.name!,
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: fontSize * 0.9,

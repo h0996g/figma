@@ -31,7 +31,7 @@ class BigScreen extends StatelessWidget {
               child: const MyToggleButtonWidget(),
             ),
             const SizedBox(height: 5),
-            Expanded(child: ProductGridView()),
+            const Expanded(child: ProductGridView()),
           ],
         ),
       ),
