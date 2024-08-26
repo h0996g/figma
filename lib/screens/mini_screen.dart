@@ -1,11 +1,9 @@
 import 'package:figma/components/const.dart';
-import 'package:figma/const_size.dart';
 import 'package:figma/model/list_item.dart';
 import 'package:figma/widget/mini_screen/labeled_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:get/get.dart';
 
 class MiniScreen extends StatelessWidget {
   final double sizeSmallScreenWidth;

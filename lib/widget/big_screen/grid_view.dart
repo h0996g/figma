@@ -10,8 +10,6 @@ class ProductGridView extends StatelessWidget {
     double mediaHeight = MediaQuery.of(context).size.height;
     double screenSizeWidthOnly1 = MediaQuery.of(context).size.width * 0.3 - 40;
 
-    double iconSize = screenSizeWidthOnly1 * 0.07;
-    double containerHeight = MediaQuery.of(context).size.height * 0.09 * 0.8;
     double fontSize = screenSizeWidthOnly1 * 0.04;
 
     return GridView.builder(

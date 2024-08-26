@@ -1,7 +1,5 @@
 import 'package:figma/components/components.dart';
-import 'package:figma/const_size.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 Container navigationBarSmallScreen(
     double iconSize, double fontSize, double mediaWidth, double mediaHeight) {

@@ -1,6 +1,5 @@
 import 'package:figma/components/components.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 Container navigationBarMainScreen(
     double iconSize, double fontSize, double mediaWidth, double mediaHeight) {

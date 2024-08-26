@@ -1,6 +1,5 @@
 import 'package:figma/model/product.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 // Widget itemAppBar(
 //     String iconPath, String label, double iconSize, double fontSize) {

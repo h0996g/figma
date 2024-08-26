@@ -1,4 +1,3 @@
-import 'package:get/get.dart';
 
 // late final double sizeSmallScreenWidth;
 // late final double sizeSmallScreenHeight;

@@ -2,7 +2,6 @@ import 'package:figma/widget/big_screen/app_bar.dart';
 import 'package:figma/widget/big_screen/grid_view.dart';
 import 'package:figma/widget/big_screen/toggel_button.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class BigScreen extends StatelessWidget {
   const BigScreen({super.key});
