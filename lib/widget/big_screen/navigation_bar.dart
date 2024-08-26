@@ -85,6 +85,7 @@ Container navigationBarMainScreen() {
                           // iconSize: 40,
                           fit: BoxFit.cover),
                       Text('Call Center',
+                          textAlign: TextAlign.center,
                           style: TextStyle(
                               fontSize: fontSize * 0.8,
                               fontWeight: FontWeight.w600,

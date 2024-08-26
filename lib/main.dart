@@ -1,8 +1,10 @@
 import 'package:figma/order.dart';
+// import 'package:figma/util.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
-void main() {
+Future<void> main() async {
+  // await registerControllers();
   runApp(const MyApp());
 }
 

@@ -1,10 +1,14 @@
-import 'package:figma/components/big_screen/big_components.dart';
 import 'package:figma/const_size.dart';
+import 'package:figma/controllers/main_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
+// CustomAppBar
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
-  const CustomAppBar({super.key});
+  CustomAppBar({super.key});
+
+  final MainController controller = Get.put(MainController());
 
   @override
   Size get preferredSize => Size.fromHeight(
@@ -24,44 +28,39 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
               child: SizedBox(
                 width: Get.width * 0.75,
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Expanded(
                       child: ListView(
                         scrollDirection: Axis.horizontal,
                         children: [
-                          itemAppBar(
-                            'assets/icons/main_screen/Vector-9.svg',
-                            'Categories',
-                          ),
-                          itemAppBar(
-                            'assets/icons/main_screen/Vector-10.svg',
-                            'Food',
-                          ),
-                          itemAppBar(
-                            'assets/icons/main_screen/Vector-11.svg',
-                            'Favourites',
-                          ),
-                          itemAppBar(
-                            'assets/icons/main_screen/Juice.svg',
-                            'Drinks',
-                          ),
-                          itemAppBar(
-                            'assets/icons/main_screen/Vector-13.svg',
-                            'Side Items',
-                          ),
+                          _buildItemAppBar(
+                              0,
+                              'assets/icons/main_screen/Vector-9.svg',
+                              'Categories'),
+                          _buildItemAppBar(1,
+                              'assets/icons/main_screen/Vector-10.svg', 'Food'),
+                          _buildItemAppBar(
+                              2,
+                              'assets/icons/main_screen/Vector-11.svg',
+                              'Favourites'),
+                          _buildItemAppBar(3,
+                              'assets/icons/main_screen/Juice.svg', 'Drinks'),
+                          _buildItemAppBar(
+                              4,
+                              'assets/icons/main_screen/Vector-13.svg',
+                              'Side Items'),
                         ],
                       ),
                     ),
                     SizedBox(
-                      width: Get.width * 0.17, // Adjust the width as needed
+                      width: Get.width * 0.17,
                       child: TextFormField(
                         decoration: InputDecoration(
                           hintText: 'Search Products ...',
-                          hintStyle: TextStyle(
-                            // color: Colors.grey,
+                          hintStyle: const TextStyle(
                             color: Colors.black,
-                            fontSize: fontSize * 0.8,
+                            fontSize: 12, // Adjust this value as needed
                             fontWeight: FontWeight.bold,
                           ),
                           border: OutlineInputBorder(
@@ -80,6 +79,58 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                 ),
               ),
             ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildItemAppBar(int index, String iconPath, String label) {
+    return GetX<MainController>(
+      builder: (controller) => MaterialButton(
+        padding: EdgeInsets.zero,
+        onPressed: () => controller.changeIndex(index),
+        child: Container(
+          width: Get.width * 0.75 / 10,
+          // height: 20,
+          // padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 8),
+          decoration: BoxDecoration(
+            color: controller.currentIndexBarBig == index
+                ? Colors.orange.withOpacity(
+                    0.1) // Add background color for the selected item
+                : Colors.transparent,
+            borderRadius: controller.currentIndexBarBig == index
+                ? BorderRadius.circular(
+                    8) // Add rounded corners for the selected item
+                : BorderRadius.zero,
+            border: Border.all(
+              color: controller.currentIndexBarBig == index
+                  ? Colors.orange // Border color for the selected item
+                  : Colors.transparent,
+            ),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              SvgPicture.asset(
+                iconPath,
+                color: controller.currentIndexBarBig == index
+                    ? Colors.orange // Changed to orange
+                    : Colors.black, // Change non-selected icons to black
+                width: 25,
+                height: 25,
+              ),
+              SizedBox(height: 5), // Add spacing between the icon and the label
+              Text(
+                label,
+                style: TextStyle(
+                    color: controller.currentIndexBarBig == index
+                        ? Colors.orange // Changed to orange
+                        : Colors.black, // Change non-selected text to black
+                    fontWeight: FontWeight.bold,
+                    fontSize: fontSize * 0.8),
+              ),
+            ],
           ),
         ),
       ),

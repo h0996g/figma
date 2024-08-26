@@ -1,5 +1,4 @@
 import 'package:figma/components/const.dart';
-import 'package:figma/components/mini_screen/components.dart';
 import 'package:figma/const_size.dart';
 import 'package:figma/model/list_item.dart';
 import 'package:figma/widget/mini_screen/labeled_border.dart';
@@ -143,7 +142,7 @@ class MiniScreen extends StatelessWidget {
 
   Widget bottomNavBar(BuildContext context) {
     return SizedBox(
-      height: Get.height * 0.09, // Set the height to your desired value
+      height: Get.height * 0.1, // Set the height to your desired value
       child: BottomNavigationBar(
         showSelectedLabels: false,
         showUnselectedLabels: false,
@@ -273,7 +272,7 @@ class MiniScreen extends StatelessWidget {
   Widget _buildResponsiveRow() {
     return Row(
       children: [
-        Expanded(flex: 5, child: _buildIconContainer()),
+        Expanded(flex: 4, child: _buildIconContainer()),
         SizedBox(width: screenSizeWidthOnly * 0.01),
         Expanded(
             flex: 7,
@@ -285,7 +284,7 @@ class MiniScreen extends StatelessWidget {
             child: _buildDateTimeContainer(containerHeight, fontSize)),
         SizedBox(width: screenSizeWidthOnly * 0.01),
         Expanded(
-            flex: 5, child: _buildDeleteContainer(containerHeight, iconSize)),
+            flex: 4, child: _buildDeleteContainer(containerHeight, iconSize)),
       ],
     );
   }

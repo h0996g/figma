@@ -4,17 +4,17 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 Container navigationBarSmallScreen() {
+  double spaceSizedBoxNav = Get.height * 0.02;
   return Container(
     color: Colors.white,
-    width: (Get.width * 0.25) * 0.1,
+    width: (Get.width * 0.25) * 0.13,
     // Removed fixed width, as it is now defined in the parent Row
     child: Column(
       mainAxisAlignment: MainAxisAlignment.start,
       children: [
-        const SizedBox(height: 10),
+        SizedBox(height: spaceSizedBoxNav),
         Expanded(
           child: SizedBox(
-            width: 40,
             child: ListView(
               children: [
                 // SvgPicture.asset(
@@ -39,7 +39,7 @@ Container navigationBarSmallScreen() {
         ),
         Column(
           children: [
-            const SizedBox(height: 5),
+            // SizedBox(height: 1),
 
             Container(
               color: const Color(0xffF2F2F2),
@@ -57,7 +57,7 @@ Container navigationBarSmallScreen() {
                 ),
               ),
             ),
-            const SizedBox(height: 5),
+            SizedBox(height: spaceSizedBoxNav),
             Container(
               color: const Color(0xffF2F2F2),
               height: 35,
@@ -74,7 +74,7 @@ Container navigationBarSmallScreen() {
                 ),
               ),
             ),
-            const SizedBox(height: 5),
+            SizedBox(height: spaceSizedBoxNav),
 
             Container(
               color: const Color(0xffF2F2F2),
