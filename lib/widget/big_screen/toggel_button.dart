@@ -26,7 +26,7 @@ class _MyToggleButtonWidgetState extends State<MyToggleButtonWidget> {
         child: SingleChildScrollView(
           scrollDirection: Axis.horizontal,
           child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               buildCustomToggleButton('Daily Breakfast', 0),
               buildCustomToggleButton('Special Offers', 1),
@@ -61,7 +61,7 @@ class _MyToggleButtonWidgetState extends State<MyToggleButtonWidget> {
           title,
           style: TextStyle(
             color: isSelected ? Colors.white : Colors.black,
-            fontSize: fontSize * 0.8,
+            fontSize: fontSize * 0.9,
             fontWeight: FontWeight.w500,
           ),
         ),

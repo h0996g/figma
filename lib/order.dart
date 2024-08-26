@@ -60,7 +60,7 @@ class MainContent extends StatelessWidget {
   Container navigationBarMainScreen() {
     return Container(
       // color: Colors.white,
-      width: (Get.width * 0.75) * 0.1,
+      width: (Get.width * 0.75) * 0.08,
       decoration: const BoxDecoration(
         color: Colors.white,
         boxShadow: [
@@ -84,8 +84,9 @@ class MainContent extends StatelessWidget {
                   svgIconNavigationBar(
                       path: 'assets/icons/main_screen/Frame 17.svg',
                       fit: BoxFit.cover,
-                      height: Get.height * 0.09),
-                  const SizedBox(height: 10),
+                      height: Get.height * 0.088 - 10,
+                      color: Colors.black),
+                  const SizedBox(height: 20),
                   MaterialButton(
                     onPressed: () {},
                     child: Column(

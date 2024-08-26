@@ -21,11 +21,11 @@ class MainScreen extends StatelessWidget {
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(10),
+                borderRadius: BorderRadius.circular(5),
               ),
-              padding: const EdgeInsets.symmetric(horizontal: 3),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               // color: Colors.white,
-              height: Get.height * 0.07,
+              height: Get.height * 0.055,
               child: const MyToggleButtonWidget(),
             ),
             const SizedBox(height: 5),

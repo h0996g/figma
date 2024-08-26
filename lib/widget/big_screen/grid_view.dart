@@ -1,3 +1,4 @@
+import 'package:figma/const_size.dart';
 import 'package:figma/model/product.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -46,7 +47,7 @@ class ProductGridView extends StatelessWidget {
         crossAxisCount: 5, // Number of columns
         crossAxisSpacing: 5,
         mainAxisSpacing: 3,
-        childAspectRatio: 0.8, // Adjust for card size and spacing
+        childAspectRatio: 1, // Adjust for card size and spacing
       ),
       itemCount: products.length,
       itemBuilder: (context, index) {
@@ -86,23 +87,22 @@ class ProductGridView extends StatelessWidget {
                 children: [
                   Text(
                     product.name,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.bold,
-                      fontSize: 12,
+                      fontSize: fontSize * 0.9,
                     ),
                     textAlign: TextAlign.center,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                   ),
-                  const SizedBox(height: 4),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
                         '${product.price}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           color: Colors.black,
-                          fontSize: 14,
+                          fontSize: fontSize * 0.9,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
