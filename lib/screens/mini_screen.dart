@@ -1,6 +1,8 @@
+import 'package:figma/components/const.dart';
 import 'package:figma/components/mini_screen/components.dart';
 import 'package:figma/const_size.dart';
 import 'package:figma/model/list_item.dart';
+import 'package:figma/widget/mini_screen/labeled_border.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/svg.dart';
@@ -16,83 +18,6 @@ class MiniScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final List<MealItem> mealItems = [
-      MealItem(
-        quantity: '1',
-        title:
-            'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-        subtitle: 'Italien - Stor',
-        isPcs: true,
-        price: '2800',
-      ),
-      MealItem(
-        quantity: '1',
-        title:
-            'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-        subtitle: 'Italien - Stor',
-        isPcs: true,
-        price: '2800',
-      ),
-      MealItem(
-        quantity: '3.750',
-        title:
-            'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-        subtitle: 'Italien - Stor',
-        isPcs: false,
-        price: '2800',
-      ),
-      MealItem(
-        quantity: '1',
-        title:
-            'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-        subtitle: 'Italien - Stor',
-        isPcs: true,
-        price: '2800',
-        oldPrice: '2800',
-        discount: '20%',
-      ),
-      MealItem(
-        quantity: '1',
-        title:
-            'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-        subtitle: 'Italien - Stor',
-        isPcs: true,
-        price: '2800',
-      ),
-      MealItem(
-        quantity: '1',
-        title:
-            'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-        subtitle: 'Italien - Stor',
-        isPcs: true,
-        price: '2800',
-      ),
-      MealItem(
-        quantity: '1',
-        title:
-            'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-        subtitle: 'Italien - Stor',
-        isPcs: true,
-        price: '2800',
-      ),
-      MealItem(
-        quantity: '1',
-        title:
-            'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-        subtitle: 'Italien - Stor',
-        isPcs: true,
-        price: '2800',
-      ),
-      MealItem(
-        quantity: '1',
-        title:
-            'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-        subtitle: 'Italien - Stor',
-        isPcs: true,
-        price: '2800',
-      ),
-    ];
-
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -108,7 +33,6 @@ class MiniScreen extends StatelessWidget {
                 ],
               ),
             ),
-
             Card(
               color: Colors.white,
               elevation: 0,
@@ -121,116 +45,6 @@ class MiniScreen extends StatelessWidget {
                 ],
               ),
             ),
-            // Card(
-            //   color: Colors.white,
-            //   elevation: 0,
-            //   child: Column(
-            //     mainAxisSize: MainAxisSize.max,
-            //     crossAxisAlignment: CrossAxisAlignment.start,
-            //     children: [
-            //       _buildResponsiveRow3(
-            //         screenSizeWidth: screenSizeWidthOnly,
-            //         screenSizeHeight: sizeSmallScreenHeight,
-            //         quantity: '1',
-            //         title:
-            //             'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-            //         subtitle: 'Italien - Stor',
-            //         isPcs: true,
-            //         price: '2800',
-            //       ),
-            //       const SizedBox(height: 5),
-            //       _buildResponsiveRow3(
-            //         screenSizeWidth: screenSizeWidthOnly,
-            //         screenSizeHeight: sizeSmallScreenHeight,
-            //         quantity: '1',
-            //         title:
-            //             'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-            //         subtitle: 'Italien - Stor',
-            //         isPcs: true,
-            //         price: '2800',
-            //       ),
-            //       const SizedBox(height: 5),
-            //       _buildResponsiveRow3(
-            //         screenSizeWidth: screenSizeWidthOnly,
-            //         screenSizeHeight: sizeSmallScreenHeight,
-            //         quantity: '3.750',
-            //         title:
-            //             'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-            //         subtitle: 'Italien - Stor',
-            //         isPcs: false,
-            //         price: '2800',
-            //       ),
-            //       const SizedBox(height: 5),
-            //       _buildResponsiveRow3(
-            //         screenSizeWidth: screenSizeWidthOnly,
-            //         screenSizeHeight: sizeSmallScreenHeight,
-            //         quantity: '1',
-            //         title:
-            //             'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-            //         subtitle: 'Italien - Stor',
-            //         isPcs: true,
-            //         price: '2800',
-            //         oldPrice: '2800',
-            //         discount: '20%',
-            //       ),
-            //       const SizedBox(height: 5),
-            //       _buildResponsiveRow3(
-            //         screenSizeWidth: screenSizeWidthOnly,
-            //         screenSizeHeight: sizeSmallScreenHeight,
-            //         quantity: '1',
-            //         title:
-            //             'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-            //         subtitle: 'Italien - Stor',
-            //         isPcs: true,
-            //         price: '2800',
-            //       ),
-            //       const SizedBox(height: 5),
-            //       _buildResponsiveRow3(
-            //         screenSizeWidth: screenSizeWidthOnly,
-            //         screenSizeHeight: sizeSmallScreenHeight,
-            //         quantity: '1',
-            //         title:
-            //             'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-            //         subtitle: 'Italien - Stor',
-            //         isPcs: true,
-            //         price: '2800',
-            //       ),
-            //       const SizedBox(height: 5),
-            //       _buildResponsiveRow3(
-            //         screenSizeWidth: screenSizeWidthOnly,
-            //         screenSizeHeight: sizeSmallScreenHeight,
-            //         quantity: '1',
-            //         title:
-            //             'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-            //         subtitle: 'Italien - Stor',
-            //         isPcs: true,
-            //         price: '2800',
-            //       ),
-            //       const SizedBox(height: 5),
-            //       _buildResponsiveRow3(
-            //         screenSizeWidth: screenSizeWidthOnly,
-            //         screenSizeHeight: sizeSmallScreenHeight,
-            //         quantity: '1',
-            //         title:
-            //             'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-            //         subtitle: 'Italien - Stor',
-            //         isPcs: true,
-            //         price: '2800',
-            //       ),
-            //       const SizedBox(height: 5),
-            //       _buildResponsiveRow3(
-            //         screenSizeWidth: screenSizeWidthOnly,
-            //         screenSizeHeight: sizeSmallScreenHeight,
-            //         quantity: '1',
-            //         title:
-            //             'the Quarter Charcoal Grilled Chicken Meal is a culinary delight',
-            //         subtitle: 'Italien - Stor',
-            //         isPcs: true,
-            //         price: '2800',
-            //       ),
-            //     ],
-            //   ),
-            // ),
             Card(
               color: Colors.white,
               elevation: 0,
@@ -241,61 +55,7 @@ class MiniScreen extends StatelessWidget {
                 physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   final item = mealItems[index];
-                  return Slidable(
-                    startActionPane: ActionPane(
-                      motion: const BehindMotion(),
-                      children: [
-                        CustomSlidableAction(
-                          autoClose: true,
-                          borderRadius:
-                              const BorderRadius.all(Radius.circular(3)),
-
-                          onPressed: (context) {},
-                          foregroundColor: Colors.white,
-                          backgroundColor: const Color.fromRGBO(235, 87, 87, 1),
-                          // background: rgba(155, 81, 224, 1);
-
-                          child: SvgPicture.asset(
-                              'assets/icons/mini_screen/slide.svg',
-                              width: iconSize * 0.7,
-                              height: iconSize * 0.7),
-                        ),
-                      ],
-                    ),
-                    endActionPane: ActionPane(
-                      motion: const BehindMotion(),
-                      extentRatio: 0.45, // Adjust this value as needed
-                      children: [
-                        Expanded(
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                            children: [
-                              _buildCustomSlidableAction(
-                                  'assets/icons/mini_screen/slide-1.svg'),
-                              _buildCustomSlidableAction(
-                                  'assets/icons/mini_screen/slide-2.svg'),
-                              _buildCustomSlidableAction(
-                                  'assets/icons/mini_screen/slide-3.svg'),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
-                    child: _buildResponsiveRow3(
-                      screenSizeWidth: screenSizeWidthOnly,
-                      screenSizeHeight: sizeSmallScreenHeight,
-                      quantity: item.quantity,
-                      title: item.title,
-                      subtitle: item.subtitle,
-                      isPcs: item.isPcs,
-                      price: item.price,
-                      oldPrice: item.oldPrice,
-                      discount: item.discount,
-                    ),
-                  );
-
-                  // if (index != mealItems.length - 1)
-                  //   const SizedBox(height: 5);
+                  return listSlidable(item);
                 },
               ),
             ),
@@ -309,6 +69,58 @@ class MiniScreen extends StatelessWidget {
               screenSizeWidthOnly, (screenSizeWidthOnly) * 0.04),
           bottomNavBar(context),
         ],
+      ),
+    );
+  }
+
+  Slidable listSlidable(MealItem item) {
+    return Slidable(
+      startActionPane: ActionPane(
+        motion: const BehindMotion(),
+        children: [
+          CustomSlidableAction(
+            autoClose: true,
+            borderRadius: const BorderRadius.all(Radius.circular(3)),
+
+            onPressed: (context) {},
+            foregroundColor: Colors.white,
+            backgroundColor: const Color.fromRGBO(235, 87, 87, 1),
+            // background: rgba(155, 81, 224, 1);
+
+            child: SvgPicture.asset('assets/icons/mini_screen/slide.svg',
+                width: iconSize * 0.7, height: iconSize * 0.7),
+          ),
+        ],
+      ),
+      endActionPane: ActionPane(
+        motion: const BehindMotion(),
+        extentRatio: 0.45, // Adjust this value as needed
+        children: [
+          Expanded(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _buildCustomSlidableAction(
+                    'assets/icons/mini_screen/slide-1.svg'),
+                _buildCustomSlidableAction(
+                    'assets/icons/mini_screen/slide-2.svg'),
+                _buildCustomSlidableAction(
+                    'assets/icons/mini_screen/slide-3.svg'),
+              ],
+            ),
+          ),
+        ],
+      ),
+      child: _buildResponsiveRow3(
+        screenSizeWidth: screenSizeWidthOnly,
+        screenSizeHeight: sizeSmallScreenHeight,
+        quantity: item.quantity,
+        title: item.title,
+        subtitle: item.subtitle,
+        isPcs: item.isPcs,
+        price: item.price,
+        oldPrice: item.oldPrice,
+        discount: item.discount,
       ),
     );
   }

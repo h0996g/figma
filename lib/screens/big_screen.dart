@@ -1,11 +1,11 @@
-import 'package:figma/components/components.dart';
+import 'package:figma/widget/big_screen/app_bar.dart';
 import 'package:figma/widget/big_screen/grid_view.dart';
 import 'package:figma/widget/big_screen/toggel_button.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class MainScreen extends StatelessWidget {
-  const MainScreen({super.key});
+class BigScreen extends StatelessWidget {
+  const BigScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
