@@ -1,13 +1,14 @@
+import 'package:figma/components/size.dart';
 import 'package:figma/order.dart';
-// import 'package:figma/services/sql_lite.dart';
 import 'package:figma/util.dart';
-// import 'package:figma/util.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:get/get_navigation/src/root/get_material_app.dart';
 
 Future<void> main() async {
   await registerServices();
-  // await DatabaseService.instance.getMealItems();
+  SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+      overlays: [SystemUiOverlay.bottom]);
   runApp(const MyApp());
 }
 
@@ -16,6 +17,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // print(MediaQueryValues(context).width);
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',

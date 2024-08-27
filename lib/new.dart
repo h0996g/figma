@@ -5,16 +5,14 @@ class FigmaPage2 extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        body: Row(
-          children: [
-            const Expanded(
-              child: MainContent(),
-            ),
-            navigationBar(),
-          ],
-        ),
+    return Scaffold(
+      body: Row(
+        children: [
+          const Expanded(
+            child: MainContent(),
+          ),
+          navigationBar(),
+        ],
       ),
     );
   }

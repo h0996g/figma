@@ -57,35 +57,39 @@ Widget buildProductCard(MealItem product, double fontSize, double mediaHeight) {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  product.name!,
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: fontSize * 0.9,
+                Flexible(
+                  child: Text(
+                    product.name,
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: fontSize * 0.8,
+                    ),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
                   ),
-                  textAlign: TextAlign.center,
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
                 ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      '${product.price}',
-                      style: TextStyle(
-                        color: Colors.black,
-                        fontSize: fontSize * 0.9,
-                        fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        '${product.price}',
+                        style: TextStyle(
+                          color: Colors.black,
+                          fontSize: fontSize * 0.9,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    const Text(
-                      ' DZD',
-                      style: TextStyle(
-                        color: Colors.grey,
-                        fontSize: 14,
+                      const Text(
+                        ' DZD',
+                        style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 14,
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ],
             ),

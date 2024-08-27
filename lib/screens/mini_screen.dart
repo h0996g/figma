@@ -2,18 +2,37 @@ import 'package:figma/controllers/main_controller.dart';
 import 'package:figma/model/list_item.dart';
 import 'package:figma/widget/mini_screen/labeled_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 
-class MiniScreen extends StatelessWidget {
+class MiniScreen extends StatefulWidget {
   final double sizeSmallScreenWidth;
   final double sizeSmallScreenHeight;
   const MiniScreen(
       {super.key,
       required this.sizeSmallScreenWidth,
       required this.sizeSmallScreenHeight});
+
+  @override
+  State<MiniScreen> createState() => _MiniScreenState();
+}
+
+class _MiniScreenState extends State<MiniScreen> {
+  @override
+  void initState() {
+    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky);
+    SystemChrome.setEnabledSystemUIMode(
+      SystemUiMode.immersiveSticky,
+    );
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.landscapeRight,
+      DeviceOrientation.landscapeLeft,
+    ]);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -27,6 +46,8 @@ class MiniScreen extends StatelessWidget {
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          mainAxisSize: MainAxisSize.max,
           children: [
             Card(
               color: Colors.white,
@@ -48,7 +69,7 @@ class MiniScreen extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   _buildResponsiveRow2(
-                      screenSizeWidthOnly1, sizeSmallScreenHeight),
+                      screenSizeWidthOnly1, widget.sizeSmallScreenHeight),
                 ],
               ),
             ),
@@ -180,7 +201,7 @@ class MiniScreen extends StatelessWidget {
       ),
       child: _buildResponsiveRow3(
         screenSizeWidthOnly1: screenSizeWidthOnly1,
-        screenSizeHeight: sizeSmallScreenHeight,
+        screenSizeHeight: widget.sizeSmallScreenHeight,
         quantity: item.quantity!,
         title: item.name,
         subtitle: item.subtitle!,
@@ -216,7 +237,7 @@ class MiniScreen extends StatelessWidget {
     final MainController navController = Get.put(MainController());
 
     return Obx(() => SizedBox(
-          height: mediaHeight * 0.12, // Set the height to your desired value
+          height: mediaHeight * 0.13, // Set the height to your desired value
           child: BottomNavigationBar(
             currentIndex: navController.selectedIndex.value,
             onTap: (index) {
@@ -378,7 +399,7 @@ class MiniScreen extends StatelessWidget {
             child: _buildDateTimeContainer(containerHeight, fontSize)),
         SizedBox(width: screenSizeWidthOnly1 * 0.01),
         Expanded(
-            flex: 4, child: _buildDeleteContainer(containerHeight, iconSize)),
+            flex: 5, child: _buildDeleteContainer(containerHeight, iconSize)),
       ],
     );
   }
@@ -509,11 +530,11 @@ class MiniScreen extends StatelessWidget {
     return Row(
       children: [
         Expanded(
-            flex: 5,
+            flex: 4,
             child: _buildIconContainer2(containerHeight, iconSize, fontSize)),
         SizedBox(width: screenSizeWidth * 0.01),
         Expanded(
-            flex: 28,
+            flex: 29,
             child:
                 _buildDateTimeContainer2(containerHeight, fontSize, iconSize)),
         // SizedBox(width: screenSize.width * 0.01),
@@ -534,15 +555,18 @@ class MiniScreen extends StatelessWidget {
           child: Column(
         children: [
           // Icon(Icons.group, size: iconSize * 0.8),
-          SvgPicture.asset(
-            'assets/icons/users.svg',
-            width: iconSize * 0.8,
-            height: iconSize * 0.8,
+          Expanded(
+            child: SvgPicture.asset(
+              'assets/icons/users.svg',
+              width: iconSize * 0.8,
+              height: iconSize * 0.8,
+              // color: Colors.grey,
+            ),
           ),
 
           Text('4',
-              style:
-                  TextStyle(fontSize: fontSize, fontWeight: FontWeight.bold)),
+              style: TextStyle(
+                  fontSize: fontSize * 0.8, fontWeight: FontWeight.bold)),
         ],
       )),
     );

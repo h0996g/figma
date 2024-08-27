@@ -36,8 +36,9 @@ class ProductGridView extends StatelessWidget {
     showDialog(
       context: context,
       builder: (BuildContext context) {
-        String quantity = '';
+        String? quantity;
         return AlertDialog(
+          backgroundColor: Colors.white,
           title: Text('Enter quantity for ${product.name}'),
           content: TextField(
             keyboardType: TextInputType.number,
@@ -56,8 +57,8 @@ class ProductGridView extends StatelessWidget {
             TextButton(
               child: const Text('Save'),
               onPressed: () {
-                if (quantity.isNotEmpty) {
-                  _saveMealItemToDatabase(product, quantity);
+                if (quantity != null && quantity!.isNotEmpty) {
+                  _saveMealItemToDatabase(product, quantity!);
                   Navigator.of(context).pop();
                 }
               },

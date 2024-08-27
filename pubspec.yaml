@@ -68,6 +68,7 @@ flutter:
   assets:
     - assets/icons/
     - assets/icons/mini_screen/
+    - assets/icons/mini_screen/navside/
     - assets/icons/main_screen/
     - assets/images/
   #   - images/a_dot_ham.jpeg
