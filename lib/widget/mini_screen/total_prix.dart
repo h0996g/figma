@@ -13,21 +13,24 @@ class TotalPrix extends StatelessWidget {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
-        // Divider(color: Colors.grey.shade200, thickness: 1, height: 0),
+        Divider(color: Colors.grey.shade200, thickness: 1, height: 0),
         SizedBox(
           height: priceNavigationBarHight * 0.5,
           child: Row(
+            // mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               _buildPriceColumn(
-                  'Subtotal', '2000', screenSizeWidthOnly1 * 0.035),
-              _buildPriceColumn('Service', '175', screenSizeWidthOnly1 * 0.035),
+                  'Subtotal', '2000', priceNavigationBarHight * 0.18),
               _buildPriceColumn(
-                  'Delivery', '175', screenSizeWidthOnly1 * 0.035),
-              _buildPriceColumn('Val', '200', screenSizeWidthOnly1 * 0.035),
+                  'Service', '175', priceNavigationBarHight * 0.18),
+              _buildPriceColumn(
+                  'Delivery', '175', priceNavigationBarHight * 0.18),
+              _buildPriceColumn('Val', '200', priceNavigationBarHight * 0.18),
             ],
           ),
         ),
-        // Divider(color: Colors.grey.shade200, thickness: 1, height: 0),
+        Divider(color: Colors.grey.shade200, thickness: 1, height: 0),
         Container(
           height: priceNavigationBarHight * 0.5,
           // color: Colors.red,
@@ -69,17 +72,20 @@ class TotalPrix extends StatelessWidget {
 
   Widget _buildPriceColumn(String label, String price, double fontSize) {
     return Expanded(
-      child: Column(
-        children: [
-          Text(label,
-              style: TextStyle(
-                  color: Colors.grey.shade600,
-                  fontSize: fontSize * 0.8,
-                  fontWeight: FontWeight.w600)),
-          Text(price,
-              style:
-                  TextStyle(fontSize: fontSize, fontWeight: FontWeight.w600)),
-        ],
+      child: FittedBox(
+        // fit: BoxFit.none,
+        child: Column(
+          children: [
+            Text(label,
+                style: TextStyle(
+                    color: Colors.grey.shade600,
+                    fontSize: fontSize,
+                    fontWeight: FontWeight.w600)),
+            Text(price,
+                style:
+                    TextStyle(fontSize: fontSize, fontWeight: FontWeight.w600)),
+          ],
+        ),
       ),
     );
   }
@@ -95,20 +101,22 @@ class TotalPrix extends StatelessWidget {
 
   Widget _buildChip(
       {required String text, required Color color, required double fontSize}) {
-    return Container(
-      padding: EdgeInsets.symmetric(horizontal: fontSize * 0.5),
+    return FittedBox(
+      child: Container(
+        padding: EdgeInsets.symmetric(horizontal: fontSize * 0.5),
 
-      decoration:
-          BoxDecoration(color: color, borderRadius: BorderRadius.circular(5)),
-      height: fontSize + fontSize * 0.2,
-      // width: fontSize * 2.5,
-      child: Center(
-        child: Text(text,
-            textAlign: TextAlign.center,
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: fontSize * 0.8,
-                fontWeight: FontWeight.bold)),
+        decoration:
+            BoxDecoration(color: color, borderRadius: BorderRadius.circular(5)),
+        height: fontSize + fontSize * 0.2,
+        // width: fontSize * 2.5,
+        child: Center(
+          child: Text(text,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: fontSize * 0.8,
+                  fontWeight: FontWeight.bold)),
+        ),
       ),
     );
   }

@@ -1,6 +1,5 @@
 import 'package:figma/components/size.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 
 // (double screenSizeWidthOnly1, double iconSize,
@@ -156,57 +155,60 @@ class FirstRow extends StatelessWidget {
         borderRadius:
             BorderRadius.circular(5), // Border radius for the main container
       ),
-      child: Column(
-        // mainAxisSize: MainAxisSize.max,
-        crossAxisAlignment: CrossAxisAlignment.start,
+      child: FittedBox(
+        child: Column(
+          // mainAxisSize: MainAxisSize.max,
+          crossAxisAlignment: CrossAxisAlignment.start,
 
-        // crossAxisAlignment: CrossAxisAlignment.start,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            mainAxisSize: MainAxisSize.max,
-            children: [
-              Text('Today',
-                  style: TextStyle(
-                      fontSize: fontSize, fontWeight: FontWeight.w600)),
-              Text('08:16',
-                  style: TextStyle(
-                      fontSize: fontSize,
-                      fontWeight: FontWeight.w600,
-                      color: Colors.grey.shade700),
-                  textAlign: TextAlign.end),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text('Ready on', style: TextStyle(fontSize: fontSize * 0.8)),
-              // SizedBox(width: height * 0.1),
-              Container(
-                width: width * 0.384 * 0.39,
-                height: height * 0.059 * 0.5,
-                margin: const EdgeInsets.symmetric(
-                  horizontal: 5,
-                ),
-                decoration: BoxDecoration(
-                  color: const Color.fromRGBO(33, 150, 83, 1),
-                  // background: rgba(33, 150, 83, 1);
-//
-                  borderRadius: BorderRadius.circular(height * 0.2),
-                ),
-                child: Center(
-                  child: Text('50 Min',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontSize: fontSize * 0.8,
-                          fontWeight: FontWeight.bold)),
-                ),
-              )
-            ],
-          ),
-        ],
+          // crossAxisAlignment: CrossAxisAlignment.start,
+          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisSize: MainAxisSize.max,
+              children: [
+                Text('Today',
+                    style: TextStyle(
+                        fontSize: fontSize, fontWeight: FontWeight.w600)),
+                SizedBox(width: width * 0.38 * 0.3),
+                Text('08:16',
+                    style: TextStyle(
+                        fontSize: fontSize,
+                        fontWeight: FontWeight.w600,
+                        color: Colors.grey.shade700),
+                    textAlign: TextAlign.end),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text('Ready on', style: TextStyle(fontSize: fontSize * 0.8)),
+                // SizedBox(width: height * 0.1),
+                Container(
+                  width: width * 0.384 * 0.39,
+                  height: height * 0.059 * 0.5,
+                  margin: const EdgeInsets.symmetric(
+                    horizontal: 5,
+                  ),
+                  decoration: BoxDecoration(
+                    color: const Color.fromRGBO(33, 150, 83, 1),
+                    // background: rgba(33, 150, 83, 1);
+                    //
+                    borderRadius: BorderRadius.circular(height * 0.2),
+                  ),
+                  child: Center(
+                    child: Text('50 Min',
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            color: Colors.white,
+                            fontSize: fontSize * 0.8,
+                            fontWeight: FontWeight.bold)),
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
