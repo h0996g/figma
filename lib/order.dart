@@ -26,27 +26,23 @@ class FigmaPage extends StatelessWidget {
         ),
         SizedBox(
           width: MediaQueryValues(context).miniScreenWidth,
-          child: smallScreen(
-              MediaQueryValues(context).width * 0.25,
-              MediaQueryValues(context).height,
-              MediaQuery.sizeOf(context).width,
-              mediaHeight,
-              context),
+          child: smallScreen(MediaQueryValues(context).width * 0.25,
+              MediaQueryValues(context).height, context),
         ),
       ],
     );
   }
 
-  Row smallScreen(double sizeSmallScreenWidth, double sizeSmallScreenHeight,
-      double mediaWidth, double mediaHeight, context) {
+  Row smallScreen(
+      double sizeSmallScreenWidth, double sizeSmallScreenHeight, context) {
     return Row(
       children: [
         Expanded(
           // flex: 8,
           child: MiniScreen(
-            sizeSmallScreenWidth: sizeSmallScreenWidth,
-            sizeSmallScreenHeight: sizeSmallScreenHeight,
-          ),
+              // sizeSmallScreenWidth: sizeSmallScreenWidth,
+              // sizeSmallScreenHeight: sizeSmallScreenHeight,
+              ),
         ),
         const VerticalDivider(
           width: 0.5,

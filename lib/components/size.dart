@@ -7,9 +7,18 @@ extension MediaQueryValues on BuildContext {
 //--------------------Mini Screen--------------------
 
   double get miniScreenWidth => MediaQuery.of(this).size.width * 0.25;
+  double get onlyminiScreenWidth =>
+      miniScreenWidth - miniScreenNavigationBarSmallwidth;
   double get miniScreenHeight => MediaQuery.of(this).size.height;
+  double get miniButtonNavHight => miniScreenHeight * 0.16;
+  double get miniScreenHeightOnly => miniScreenHeight - miniButtonNavHight;
   double get miniScreenNavigationBarSmallwidth => miniScreenWidth * 0.11;
   double get miniScreenSpaceBetweenNav => height * 0.02;
+
+  // nav bar
+  double get toggelnavigationBarHight => miniButtonNavHight * 0.47;
+  double get priceNavigationBarHight =>
+      miniButtonNavHight - toggelnavigationBarHight;
 
   //---------------------------------------------------
 
@@ -18,8 +27,7 @@ extension MediaQueryValues on BuildContext {
 // -------------------Big Screen---------------------
   double get bigScreenWidth => MediaQuery.of(this).size.width * 0.75;
   double get bigScreenHeight => MediaQuery.of(this).size.height;
-  double get navigationBarBigScreenwidth =>
-      (MediaQuery.of(this).size.width * 0.75) * 0.08;
+  double get navigationBarBigScreenwidth => bigScreenWidth * 0.08;
 
   //---------------------------------------------------------
   double get iconSizeWidth => width * 0.03;

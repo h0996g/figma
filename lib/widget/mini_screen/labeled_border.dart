@@ -37,26 +37,27 @@ class LabeledBorder extends StatelessWidget {
         ),
 
         // Right label
-        Positioned(
-          right: -5,
-          top: 0,
-          bottom: 0,
-          child: Center(
-            child: RotatedBox(
-              quarterTurns: 1,
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-                color: isFrezze
-                    ? const Color.fromRGBO(224, 236, 252, 1)
-                    : Colors.grey[100]!.withOpacity(0.7),
-                child: Text(
-                  rightLabel,
-                  style: const TextStyle(fontSize: 6),
-                ),
-              ),
-            ),
-          ),
-        ),
+        // Positioned(
+        //   right: -4,
+        //   top: 0,
+        //   bottom: 0,
+        //   child: Center(
+        //     child: RotatedBox(
+        //       quarterTurns: 1,
+        //       child: Container(
+        //         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+        //         color: isFrezze
+        //             ? const Color.fromRGBO(224, 236, 252, 1)
+        //             : Colors.grey[100]!.withOpacity(0.7),
+        //         child: Text(
+        //           rightLabel,
+        //           style: const TextStyle(fontSize: 6),
+        //         ),
+        //       ),
+        //     ),
+        //   ),
+        // ),
+
         // Bottom label
         Positioned(
           left: 0,
@@ -66,7 +67,7 @@ class LabeledBorder extends StatelessWidget {
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
               color: isFrezze
-                  ? const Color.fromRGBO(224, 236, 252, 1)
+                  ? const Color.fromRGBO(224, 236, 252, 1).withOpacity(0.4)
                   : Colors.grey[100]!.withOpacity(0.7),
               child: Text(
                 bottomLabel,
