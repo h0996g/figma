@@ -1,3 +1,4 @@
+import 'package:figma/components/size.dart';
 import 'package:figma/widget/big_screen/app_bar.dart';
 import 'package:figma/widget/big_screen/grid_view.dart';
 import 'package:figma/widget/big_screen/toggel_button.dart';
@@ -14,15 +15,15 @@ class BigScreen extends StatefulWidget {
 class _BigScreenState extends State<BigScreen> {
   @override
   void initState() {
-    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky,
-    //     overlays: [SystemUiOverlay.bottom]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersiveSticky,
+        overlays: [SystemUiOverlay.bottom]);
 
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    double mediaHeight = MediaQuery.of(context).size.height;
+    double mediaHeight = MediaQueryValues(context).height;
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: CustomAppBar(

@@ -19,202 +19,197 @@ class NavigationBarSmallScreen extends StatelessWidget {
       width: MediaQueryValues(context).miniScreenNavigationBarSmallwidth,
       height: MediaQueryValues(context).miniScreenHeight,
       // Removed fixed width, as it is now defined in the parent Row
-      child: Container(
-        // color: Colors.black,
-        height: MediaQueryValues(context).miniScreenHeight,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-                height: MediaQueryValues(context).miniScreenSpaceBetweenNav),
-            svgIconNavigationBar(
-                path: 'assets/icons/mini_screen/navside/bill.svg',
-                width: iconSizeWidth,
-                height: iconSizeHeight,
-                paddingHeight: padding),
-            svgIconNavigationBar(
-                path: 'assets/icons/mini_screen/navside/user.svg',
-                width: iconSizeWidth,
-                height: iconSizeHeight,
-                paddingHeight: padding),
-            svgIconNavigationBar(
-                path: 'assets/icons/mini_screen/navside/Location.svg',
-                width: iconSizeWidth,
-                height: iconSizeHeight,
-                paddingHeight: padding),
-            svgIconNavigationBar(
-                path: 'assets/icons/mini_screen/navside/clock.svg',
-                width: iconSizeWidth,
-                height: iconSizeHeight,
-                paddingHeight: padding),
-            svgIconNavigationBar(
-                path: 'assets/icons/mini_screen/navside/persentage.svg',
-                width: iconSizeWidth,
-                height: iconSizeHeight,
-                paddingHeight: padding),
-            svgIconNavigationBar(
-                path: 'assets/icons/mini_screen/navside/Users.svg',
-                width: iconSizeWidth,
-                height: iconSizeHeight,
-                paddingHeight: padding),
-            svgIconNavigationBar(
-                path: 'assets/icons/mini_screen/navside/plate.svg',
-                width: iconSizeWidth,
-                height: iconSizeHeight,
-                paddingHeight: padding),
-            svgIconNavigationBar(
-                path: 'assets/icons/mini_screen/navside/cooking.svg',
-                width: iconSizeWidth,
-                height: iconSizeHeight,
-                paddingHeight: padding),
-            svgIconNavigationBar(
-                path: 'assets/icons/mini_screen/navside/Edit.svg',
-                width: iconSizeWidth,
-                height: iconSizeHeight,
-                paddingHeight: padding),
-            svgIconNavigationBar(
-                path: 'assets/icons/mini_screen/navside/print.svg',
-                width: iconSizeWidth,
-                height: iconSizeHeight,
-                paddingHeight: padding),
-            svgIconNavigationBar(
-                path: 'assets/icons/mini_screen/navside/share.svg',
-                width: iconSizeWidth,
-                height: iconSizeHeight,
-                paddingHeight: padding),
-            const Spacer(),
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                // Container(
-                //   height: iconSizeWidth,
-                //   width: iconSizeWidth,
-                //   decoration: BoxDecoration(
-                //     color: Colors.grey.shade100,
-                //     borderRadius: BorderRadius.circular(0.4),
-                //   ),
-                //   child: Center(
-                //     child: Text(
-                //       '1',
-                //       style: TextStyle(
-                //           fontSize: fontSize,
-                //           fontWeight: FontWeight.bold,
-                //           color: Colors.black),
-                //     ),
-                //   ),
-                // ),
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          SizedBox(height: MediaQueryValues(context).miniScreenSpaceBetweenNav),
+          svgIconNavigationBar(
+              path: 'assets/icons/mini_screen/navside/bill.svg',
+              width: iconSizeWidth,
+              height: iconSizeHeight,
+              paddingHeight: padding),
+          svgIconNavigationBar(
+              path: 'assets/icons/mini_screen/navside/user.svg',
+              width: iconSizeWidth,
+              height: iconSizeHeight,
+              paddingHeight: padding),
+          svgIconNavigationBar(
+              path: 'assets/icons/mini_screen/navside/Location.svg',
+              width: iconSizeWidth,
+              height: iconSizeHeight,
+              paddingHeight: padding),
+          svgIconNavigationBar(
+              path: 'assets/icons/mini_screen/navside/clock.svg',
+              width: iconSizeWidth,
+              height: iconSizeHeight,
+              paddingHeight: padding),
+          svgIconNavigationBar(
+              path: 'assets/icons/mini_screen/navside/persentage.svg',
+              width: iconSizeWidth,
+              height: iconSizeHeight,
+              paddingHeight: padding),
+          svgIconNavigationBar(
+              path: 'assets/icons/mini_screen/navside/Users.svg',
+              width: iconSizeWidth,
+              height: iconSizeHeight,
+              paddingHeight: padding),
+          svgIconNavigationBar(
+              path: 'assets/icons/mini_screen/navside/plate.svg',
+              width: iconSizeWidth,
+              height: iconSizeHeight,
+              paddingHeight: padding),
+          svgIconNavigationBar(
+              path: 'assets/icons/mini_screen/navside/cooking.svg',
+              width: iconSizeWidth,
+              height: iconSizeHeight,
+              paddingHeight: padding),
+          svgIconNavigationBar(
+              path: 'assets/icons/mini_screen/navside/Edit.svg',
+              width: iconSizeWidth,
+              height: iconSizeHeight,
+              paddingHeight: padding),
+          svgIconNavigationBar(
+              path: 'assets/icons/mini_screen/navside/print.svg',
+              width: iconSizeWidth,
+              height: iconSizeHeight,
+              paddingHeight: padding),
+          svgIconNavigationBar(
+              path: 'assets/icons/mini_screen/navside/share.svg',
+              width: iconSizeWidth,
+              height: iconSizeHeight,
+              paddingHeight: padding),
+          const Spacer(),
+          Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              // Container(
+              //   height: iconSizeWidth,
+              //   width: iconSizeWidth,
+              //   decoration: BoxDecoration(
+              //     color: Colors.grey.shade100,
+              //     borderRadius: BorderRadius.circular(0.4),
+              //   ),
+              //   child: Center(
+              //     child: Text(
+              //       '1',
+              //       style: TextStyle(
+              //           fontSize: fontSize,
+              //           fontWeight: FontWeight.bold,
+              //           color: Colors.black),
+              //     ),
+              //   ),
+              // ),
 
-                // svgIconNavigationBar(
-                //     path: 'assets/icons/mini_screen/navside/Frame50.svg',
-                //     width: iconSizeWidth,
-                //     height: iconSizeWidth,
-                //     // paddingHeight: padding,
-                //     ischangecolor: false),
-                // svgIconNavigationBar(
-                //     path: 'assets/icons/mini_screen/navside/Frame51.svg',
-                //     width: iconSizeWidth,
-                //     height: iconSizeWidth,
-                //     paddingHeight: padding,
-                //     ischangecolor: false),
-                // svgIconNavigationBar(
-                //     path: 'assets/icons/mini_screen/navside/Frame47.svg',
-                //     width: iconSizeWidth,
-                //     height: iconSizeWidth,
-                //     // paddingHeight: padding,
-                //     ischangecolor: false),
+              // svgIconNavigationBar(
+              //     path: 'assets/icons/mini_screen/navside/Frame50.svg',
+              //     width: iconSizeWidth,
+              //     height: iconSizeWidth,
+              //     // paddingHeight: padding,
+              //     ischangecolor: false),
+              // svgIconNavigationBar(
+              //     path: 'assets/icons/mini_screen/navside/Frame51.svg',
+              //     width: iconSizeWidth,
+              //     height: iconSizeWidth,
+              //     paddingHeight: padding,
+              //     ischangecolor: false),
+              // svgIconNavigationBar(
+              //     path: 'assets/icons/mini_screen/navside/Frame47.svg',
+              //     width: iconSizeWidth,
+              //     height: iconSizeWidth,
+              //     // paddingHeight: padding,
+              //     ischangecolor: false),
 
-                Container(
-                    height: iconSizeHeight * 1.9,
-                    width: iconSizeWidth,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(1.5),
+              Container(
+                  height: iconSizeHeight * 1.9,
+                  width: iconSizeWidth,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(1.5),
+                  ),
+                  margin: EdgeInsets.symmetric(
+                    vertical: padding,
+                    horizontal: MediaQueryValues(context)
+                            .miniScreenNavigationBarSmallwidth *
+                        0.05,
+                  ),
+                  child: Center(
+                    child: Text(
+                      '1',
+                      style: TextStyle(
+                          fontSize: fontSize * 0.1,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
                     ),
-                    margin: EdgeInsets.symmetric(
-                      vertical: padding,
-                      horizontal: MediaQueryValues(context)
-                              .miniScreenNavigationBarSmallwidth *
-                          0.05,
-                    ),
-                    child: Center(
-                      child: Text(
-                        '1',
-                        style: TextStyle(
-                            fontSize: fontSize * 0.1,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      ),
-                    )),
+                  )),
 
-                Container(
-                    height: iconSizeHeight * 1.9,
-                    width: iconSizeWidth,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(1.5),
+              Container(
+                  height: iconSizeHeight * 1.9,
+                  width: iconSizeWidth,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(1.5),
+                  ),
+                  margin: EdgeInsets.symmetric(
+                    // vertical: padding,
+                    horizontal: MediaQueryValues(context)
+                            .miniScreenNavigationBarSmallwidth *
+                        0.05,
+                  ),
+                  child: Center(
+                    child: Text(
+                      '2',
+                      style: TextStyle(
+                          fontSize: fontSize * 0.1,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
                     ),
-                    margin: EdgeInsets.symmetric(
-                      // vertical: padding,
-                      horizontal: MediaQueryValues(context)
-                              .miniScreenNavigationBarSmallwidth *
-                          0.05,
-                    ),
-                    child: Center(
-                      child: Text(
-                        '2',
-                        style: TextStyle(
-                            fontSize: fontSize * 0.1,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      ),
-                    )),
+                  )),
 
-                Container(
-                    height: iconSizeHeight * 1.9,
-                    width: iconSizeWidth,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.shade200,
-                      borderRadius: BorderRadius.circular(1.5),
+              Container(
+                  height: iconSizeHeight * 1.9,
+                  width: iconSizeWidth,
+                  decoration: BoxDecoration(
+                    color: Colors.grey.shade200,
+                    borderRadius: BorderRadius.circular(1.5),
+                  ),
+                  margin: EdgeInsets.symmetric(
+                    vertical: padding,
+                    horizontal: MediaQueryValues(context)
+                            .miniScreenNavigationBarSmallwidth *
+                        0.05,
+                  ),
+                  child: Center(
+                    child: Text(
+                      '3',
+                      style: TextStyle(
+                          fontSize: fontSize * 0.1,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.black),
                     ),
-                    margin: EdgeInsets.symmetric(
-                      vertical: padding,
-                      horizontal: MediaQueryValues(context)
-                              .miniScreenNavigationBarSmallwidth *
-                          0.05,
-                    ),
-                    child: Center(
-                      child: Text(
-                        '3',
-                        style: TextStyle(
-                            fontSize: fontSize * 0.1,
-                            fontWeight: FontWeight.bold,
-                            color: Colors.black),
-                      ),
-                    )),
-                SizedBox(
-                  height: padding,
-                ),
-                svgIconNavigationBar(
-                    path: 'assets/icons/mini_screen/navside/fast.svg',
-                    width: iconSizeWidth,
-                    height: iconSizeHeight,
-                    paddingHeight: padding),
-                svgIconNavigationBar(
-                    path: 'assets/icons/mini_screen/navside/Lock.svg',
-                    width: iconSizeWidth,
-                    height: iconSizeHeight,
-                    paddingHeight: padding),
-                svgIconNavigationBar(
-                    path: 'assets/icons/mini_screen/navside/wifi.svg',
-                    width: iconSizeWidth,
-                    height: iconSizeHeight,
-                    paddingHeight: padding),
-              ],
-            )
-          ],
-        ),
+                  )),
+              SizedBox(
+                height: padding,
+              ),
+              svgIconNavigationBar(
+                  path: 'assets/icons/mini_screen/navside/fast.svg',
+                  width: iconSizeWidth,
+                  height: iconSizeHeight,
+                  paddingHeight: padding),
+              svgIconNavigationBar(
+                  path: 'assets/icons/mini_screen/navside/Lock.svg',
+                  width: iconSizeWidth,
+                  height: iconSizeHeight,
+                  paddingHeight: padding),
+              svgIconNavigationBar(
+                  path: 'assets/icons/mini_screen/navside/wifi.svg',
+                  width: iconSizeWidth,
+                  height: iconSizeHeight,
+                  paddingHeight: padding),
+            ],
+          )
+        ],
       ),
     );
   }

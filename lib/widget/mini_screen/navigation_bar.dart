@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:figma/components/size.dart';
+import 'package:get/get_connect/http/src/utils/utils.dart';
 
 class ButtonNavigationBarMiniScreen extends StatelessWidget {
   const ButtonNavigationBarMiniScreen({super.key});
@@ -33,19 +34,27 @@ class ButtonNavigationBarMiniScreen extends StatelessWidget {
             backgroundColor: Colors.white,
             items: [
               _buildNavItem(
-                'assets/icons/mini_screen/Vector-5.svg',
+                assetPath: 'assets/icons/mini_screen/Vector-5.svg',
+                width: screenSizeWidthOnly1 * 0.1,
+                hight: toggelnavigationBar * 0.4,
                 isSelected: navController.selectedIndex.value == 0,
               ),
               _buildNavItem(
-                'assets/icons/mini_screen/Vector-6.svg',
+                assetPath: 'assets/icons/mini_screen/Vector-6.svg',
+                width: screenSizeWidthOnly1 * 0.1,
+                hight: toggelnavigationBar * 0.4,
                 isSelected: navController.selectedIndex.value == 1,
               ),
               _buildNavItem(
-                'assets/icons/mini_screen/Vector-7.svg',
+                assetPath: 'assets/icons/mini_screen/Vector-7.svg',
+                width: screenSizeWidthOnly1 * 0.1,
+                hight: toggelnavigationBar * 0.4,
                 isSelected: navController.selectedIndex.value == 2,
               ),
               _buildNavItem(
-                'assets/icons/mini_screen/Vector-8.svg',
+                assetPath: 'assets/icons/mini_screen/Vector-8.svg',
+                width: screenSizeWidthOnly1 * 0.1,
+                hight: toggelnavigationBar * 0.4,
                 isSelected: navController.selectedIndex.value == 3,
               ),
             ],
@@ -55,14 +64,17 @@ class ButtonNavigationBarMiniScreen extends StatelessWidget {
     );
   }
 
-  BottomNavigationBarItem _buildNavItem(String assetPath,
-      {bool isSelected = false}) {
+  BottomNavigationBarItem _buildNavItem(
+      {required String assetPath,
+      required double hight,
+      required double width,
+      bool isSelected = false}) {
     return BottomNavigationBarItem(
       icon: SvgPicture.asset(
         assetPath,
         color: isSelected ? Colors.orange : Colors.grey.shade400,
-        width: 10,
-        height: 10,
+        width: width,
+        height: hight,
       ),
       label: '',
     );

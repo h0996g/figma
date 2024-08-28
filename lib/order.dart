@@ -59,7 +59,7 @@ class FigmaPage extends StatelessWidget {
 
 Row bigScreen() {
   return const Row(children: [
-    // NavigationBarMainScreen(),
+    NavigationBarMainScreen(),
     Expanded(
       child: BigScreen(),
     ),

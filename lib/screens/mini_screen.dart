@@ -94,7 +94,7 @@ class _MiniScreenState extends State<MiniScreen> {
             ],
           ),
         ),
-        bottomNavigationBar: Container(
+        bottomNavigationBar: SizedBox(
           height: miniButtonNavHight,
           // color: Colors.black,
           child: const Column(
