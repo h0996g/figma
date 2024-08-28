@@ -24,10 +24,12 @@ class _BigScreenState extends State<BigScreen> {
   @override
   Widget build(BuildContext context) {
     double mediaHeight = MediaQueryValues(context).height;
+    double bigScreenWidthOnly = MediaQueryValues(context).bigScreenWidthOnly;
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: CustomAppBar(
-        mediaWidth: MediaQuery.of(context).size.width,
+        mediaWidth: bigScreenWidthOnly,
+        mediaHeight: mediaHeight,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),

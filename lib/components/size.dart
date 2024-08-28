@@ -28,6 +28,7 @@ extension MediaQueryValues on BuildContext {
   double get bigScreenWidth => MediaQuery.of(this).size.width * 0.75;
   double get bigScreenHeight => MediaQuery.of(this).size.height;
   double get navigationBarBigScreenwidth => bigScreenWidth * 0.08;
+  double get bigScreenWidthOnly => bigScreenWidth - navigationBarBigScreenwidth;
 
   //---------------------------------------------------------
   double get iconSizeWidth => width * 0.03;
