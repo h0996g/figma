@@ -22,6 +22,7 @@ class LabeledBorder extends StatelessWidget {
   Widget build(BuildContext context) {
     return Stack(
       clipBehavior: Clip.none,
+      alignment: Alignment.bottomCenter,
       children: <Widget>[
         Container(
           width: width, // Adjust as needed
@@ -60,18 +61,24 @@ class LabeledBorder extends StatelessWidget {
 
         // Bottom label
         Positioned(
-          left: 0,
-          right: 0,
-          bottom: -6,
+          // left: 0,
+          // right: 0,
+          bottom: -height * 0.16,
+          // bottom: -5,
           child: Center(
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+              width: width * 0.4,
+              height: height * 0.4,
+              // padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
               color: isFrezze
                   ? const Color.fromRGBO(224, 236, 252, 1).withOpacity(0.4)
                   : Colors.grey[100]!.withOpacity(0.7),
-              child: Text(
-                bottomLabel,
-                style: const TextStyle(fontSize: 7),
+              child: FittedBox(
+                fit: BoxFit.fill,
+                child: Text(
+                  bottomLabel,
+                  style: const TextStyle(fontSize: 7),
+                ),
               ),
             ),
           ),

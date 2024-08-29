@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:figma/components/size.dart';
 import 'package:figma/controllers/main_controller.dart';
 import 'package:figma/model/list_item.dart';
@@ -48,6 +50,7 @@ class _MiniScreenState extends State<MiniScreen> {
     double iconSize = screenSizeWidthOnly1 * 0.07;
     // double containerHeight = MediaQuery.of(context).size.height * 0.09 * 0.8;
     // double fontSize = screenSizeWidthOnly1 * 0.04;
+
     return Scaffold(
         body: SizedBox(
           height: miniScreenHeightOnly,
@@ -76,8 +79,11 @@ class _MiniScreenState extends State<MiniScreen> {
                       itemBuilder: (context, index) {
                         final item = mainController.mealItems[index];
                         if (mainController.loadingGetItem.isTrue) {
-                          return const Center(
-                              child: CircularProgressIndicator());
+                          return SizedBox(
+                            height: MediaQueryValues(context).height * 0.5,
+                            child: const Center(
+                                child: CircularProgressIndicator()),
+                          );
                         }
                         return Padding(
                           padding: EdgeInsets.symmetric(

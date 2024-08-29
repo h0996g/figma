@@ -1,23 +1,27 @@
-import 'package:figma/controllers/main_controller.dart';
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:get/get.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
+
+import 'package:figma/controllers/main_controller.dart';
 
 // CustomAppBar
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   CustomAppBar({
-    super.key,
+    Key? key,
     required this.mediaWidth,
     required this.mediaHeight,
-  });
+    required this.heightappBar,
+  }) : super(key: key);
   final double mediaWidth;
   final double mediaHeight;
+  final double heightappBar;
   final MainController controller = Get.put(MainController());
 
   @override
   Size get preferredSize => Size.fromHeight(
-        (mediaHeight * 0.11),
+        (heightappBar),
       );
 
   @override
@@ -81,6 +85,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
                       ),
                     ),
                   ),
+                  SizedBox(width: mediaWidth * 0.01),
                 ],
               ),
             ),

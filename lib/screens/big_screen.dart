@@ -25,29 +25,35 @@ class _BigScreenState extends State<BigScreen> {
   Widget build(BuildContext context) {
     double mediaHeight = MediaQueryValues(context).height;
     double bigScreenWidthOnly = MediaQueryValues(context).bigScreenWidthOnly;
+    double appBarBigScreenHight =
+        MediaQueryValues(context).appBarBigScreenHight;
     return Scaffold(
       backgroundColor: Colors.grey[200],
       appBar: CustomAppBar(
+        heightappBar: appBarBigScreenHight,
         mediaWidth: bigScreenWidthOnly,
         mediaHeight: mediaHeight,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+        padding: EdgeInsets.symmetric(
+            horizontal: bigScreenWidthOnly * 0.01,
+            vertical: mediaHeight * 0.02),
         child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisSize: MainAxisSize.max,
+          // crossAxisAlignment: CrossAxisAlignment.center,
+          // mainAxisSize: MainAxisSize.max,
           children: [
             Container(
               decoration: BoxDecoration(
                 color: Colors.white,
-                borderRadius: BorderRadius.circular(5),
+                borderRadius: BorderRadius.circular(3),
               ),
-              padding: const EdgeInsets.symmetric(horizontal: 10),
+              padding:
+                  EdgeInsets.symmetric(horizontal: bigScreenWidthOnly * 0.005),
               // color: Colors.white,
-              height: mediaHeight * 0.055,
+              // height: mediaHeight * 0.055,
               child: const MyToggleButtonWidget(),
             ),
-            const SizedBox(height: 5),
+            SizedBox(height: mediaHeight * 0.01),
             const Expanded(child: ProductGridView()),
           ],
         ),

@@ -203,9 +203,11 @@ class ThreardRow extends StatelessWidget {
                 rightLabel: 'X',
                 height: height * 0.045,
                 width: width * 0.16,
-                child: Text(quantity,
-                    style: TextStyle(
-                        fontSize: fontSize, fontWeight: FontWeight.bold)),
+                child: FittedBox(
+                  child: Text(quantity,
+                      style: TextStyle(
+                          fontSize: fontSize, fontWeight: FontWeight.bold)),
+                ),
               ),
               SizedBox(width: width * 0.02),
               Expanded(
