@@ -46,7 +46,7 @@ class FigmaPage extends StatelessWidget {
                   Center(
                     child: ClipRect(
                       child: BackdropFilter(
-                        filter: ImageFilter.blur(sigmaX: 4, sigmaY: 4),
+                        filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
                         child: Container(
                           alignment: Alignment.center,
                           width: MediaQueryValues(context).miniScreenWidth,
@@ -78,12 +78,20 @@ class FigmaPage extends StatelessWidget {
                                           0.05),
                                   child: Column(
                                     mainAxisSize: MainAxisSize.max,
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      const Expanded(
-                                          flex: 8, child: SizedBox()),
-                                      Expanded(
-                                        flex: 5,
+                                      SizedBox(
+                                          height:
+                                              MediaQueryValues(context).height *
+                                                  0.35 *
+                                                  0.15),
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal:
+                                                MediaQueryValues(context)
+                                                        .miniScreenWidth *
+                                                    0.8 *
+                                                    0.14),
                                         child: FittedBox(
                                           child: DefaultTextStyle(
                                             style: TextStyle(
@@ -91,7 +99,7 @@ class FigmaPage extends StatelessWidget {
                                                     MediaQueryValues(context)
                                                             .miniScreenWidth *
                                                         0.8 *
-                                                        0.15,
+                                                        0.13,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.black),
                                             child: const Text(
@@ -106,19 +114,32 @@ class FigmaPage extends StatelessWidget {
                                       //           0.35 *
                                       //           0.05,
                                       // ),
-                                      const Expanded(
-                                          flex: 2, child: SizedBox()),
+                                      // SizedBox(
+                                      //   height:
+                                      //       MediaQueryValues(context).height *
+                                      //           0.35 /
+                                      //           10,
+                                      // ),
+                                      SizedBox(
+                                          height:
+                                              MediaQueryValues(context).height *
+                                                  0.35 *
+                                                  0.03),
 
-                                      Expanded(
-                                        flex: 3,
+                                      Padding(
+                                        padding: EdgeInsets.symmetric(
+                                            horizontal:
+                                                MediaQueryValues(context)
+                                                        .miniScreenWidth *
+                                                    0.8 *
+                                                    0.14),
                                         child: FittedBox(
                                           child: DefaultTextStyle(
                                             style: TextStyle(
                                                 fontSize:
                                                     MediaQueryValues(context)
                                                             .miniScreenWidth *
-                                                        0.8 *
-                                                        0.15,
+                                                        0.8,
                                                 fontWeight: FontWeight.bold,
                                                 color: Colors.black),
                                             child: const Text(
@@ -133,152 +154,145 @@ class FigmaPage extends StatelessWidget {
                                       //           0.35 *
                                       //           0.2,
                                       // ),
-                                      const Expanded(
-                                          flex: 4, child: SizedBox()),
-                                      Expanded(
-                                        flex: 5,
-                                        child: Row(
-                                          children: [
-                                            Expanded(
-                                              child: Container(
-                                                height:
-                                                    MediaQueryValues(context)
-                                                            .miniScreenWidth *
-                                                        0.8 *
-                                                        0.15,
-                                                decoration: BoxDecoration(
-                                                  color: Colors.grey.shade300,
-                                                  borderRadius:
-                                                      BorderRadius.circular(
-                                                          3), // Optional: Add rounded corners
-                                                ),
-                                                child: MaterialButton(
-                                                  onPressed: () {
-                                                    Get.find<MainController>()
-                                                        .selectedIndex
-                                                        .value = oldIndex;
-                                                  },
-                                                  child: Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment
-                                                            .center,
-                                                    crossAxisAlignment:
-                                                        CrossAxisAlignment
-                                                            .center,
-                                                    children: [
-                                                      Icon(
-                                                        Icons
-                                                            .arrow_back_ios_rounded,
-                                                        size: MediaQueryValues(
-                                                                    context)
-                                                                .miniScreenWidth *
-                                                            0.8 *
-                                                            0.05,
-                                                        color: Colors.black,
-                                                      ),
-                                                      SizedBox(
-                                                        width: MediaQueryValues(
-                                                                    context)
-                                                                .miniScreenWidth *
-                                                            0.8 *
-                                                            0.02,
-                                                      ),
-                                                      FittedBox(
-                                                        child: DefaultTextStyle(
-                                                          style: TextStyle(
-                                                              fontSize: MediaQueryValues(
-                                                                          context)
-                                                                      .miniScreenWidth *
-                                                                  0.8 *
-                                                                  0.05,
-                                                              fontWeight:
-                                                                  FontWeight
-                                                                      .bold,
-                                                              color:
-                                                                  Colors.black),
-                                                          child: const Text(
-                                                            'Return',
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  ),
-                                                ),
-                                              ),
-                                            ),
-                                            SizedBox(
-                                              width: MediaQueryValues(context)
-                                                      .miniScreenWidth *
-                                                  0.8 *
-                                                  0.05,
-                                            ),
-                                            Expanded(
-                                                child: Container(
+                                      // const Expanded(
+                                      //     flex: 4, child: SizedBox()),
+                                      Spacer(),
+                                      Row(
+                                        children: [
+                                          Expanded(
+                                            child: Container(
                                               height: MediaQueryValues(context)
                                                       .miniScreenWidth *
                                                   0.8 *
                                                   0.15,
                                               decoration: BoxDecoration(
-                                                color: const Color.fromARGB(
-                                                    255, 219, 248, 231),
-
+                                                color: Colors.grey.shade300,
                                                 borderRadius: BorderRadius.circular(
                                                     3), // Optional: Add rounded corners
                                               ),
-                                              child: Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.center,
-                                                crossAxisAlignment:
-                                                    CrossAxisAlignment.center,
-                                                children: [
-                                                  // Icon(
-                                                  //   Icons.lock_outline_rounded,
-                                                  //   size: MediaQueryValues(
-                                                  //               context)
-                                                  //           .miniScreenWidth *
-                                                  //       0.8 *
-                                                  //       0.06,
-                                                  //   color: const Color.fromRGBO(
-                                                  //       33, 150, 83, 1),
-                                                  // ),
-                                                  SvgPicture.asset(
-                                                    'assets/icons/mini_screen/main_screen/lock.svg',
-                                                    width: MediaQueryValues(
-                                                                context)
-                                                            .miniScreenWidth *
-                                                        0.8 *
-                                                        0.05,
-                                                  ),
-                                                  SizedBox(
-                                                    width: MediaQueryValues(
-                                                                context)
-                                                            .miniScreenWidth *
-                                                        0.8 *
-                                                        0.02,
-                                                  ),
-                                                  FittedBox(
-                                                    child: DefaultTextStyle(
-                                                      style: TextStyle(
-                                                          fontSize: MediaQueryValues(
-                                                                      context)
-                                                                  .miniScreenWidth *
-                                                              0.8 *
-                                                              0.05,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                          color: const Color
-                                                              .fromRGBO(
-                                                              33, 150, 83, 1)),
-                                                      child: const Text(
-                                                        'Unlock',
+                                              child: MaterialButton(
+                                                onPressed: () {
+                                                  Get.find<MainController>()
+                                                      .selectedIndex
+                                                      .value = oldIndex;
+                                                },
+                                                child: Row(
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment.center,
+                                                  crossAxisAlignment:
+                                                      CrossAxisAlignment.center,
+                                                  children: [
+                                                    Icon(
+                                                      Icons
+                                                          .arrow_back_ios_rounded,
+                                                      size: MediaQueryValues(
+                                                                  context)
+                                                              .miniScreenWidth *
+                                                          0.8 *
+                                                          0.05,
+                                                      color: Colors.black,
+                                                    ),
+                                                    SizedBox(
+                                                      width: MediaQueryValues(
+                                                                  context)
+                                                              .miniScreenWidth *
+                                                          0.8 *
+                                                          0.02,
+                                                    ),
+                                                    FittedBox(
+                                                      child: DefaultTextStyle(
+                                                        style: TextStyle(
+                                                            fontSize: MediaQueryValues(
+                                                                        context)
+                                                                    .miniScreenWidth *
+                                                                0.8 *
+                                                                0.05,
+                                                            fontWeight:
+                                                                FontWeight.bold,
+                                                            color:
+                                                                Colors.black),
+                                                        child: const Text(
+                                                          'Return',
+                                                        ),
                                                       ),
                                                     ),
-                                                  ),
-                                                ],
+                                                  ],
+                                                ),
                                               ),
-                                            )),
-                                          ],
-                                        ),
+                                            ),
+                                          ),
+                                          SizedBox(
+                                            width: MediaQueryValues(context)
+                                                    .miniScreenWidth *
+                                                0.8 *
+                                                0.05,
+                                          ),
+                                          Expanded(
+                                              child: Container(
+                                            height: MediaQueryValues(context)
+                                                    .miniScreenWidth *
+                                                0.8 *
+                                                0.15,
+                                            decoration: BoxDecoration(
+                                              color: const Color.fromARGB(
+                                                  255, 219, 248, 231),
+
+                                              borderRadius: BorderRadius.circular(
+                                                  3), // Optional: Add rounded corners
+                                            ),
+                                            child: Row(
+                                              mainAxisAlignment:
+                                                  MainAxisAlignment.center,
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.center,
+                                              children: [
+                                                // Icon(
+                                                //   Icons.lock_outline_rounded,
+                                                //   size: MediaQueryValues(
+                                                //               context)
+                                                //           .miniScreenWidth *
+                                                //       0.8 *
+                                                //       0.06,
+                                                //   color: const Color.fromRGBO(
+                                                //       33, 150, 83, 1),
+                                                // ),
+                                                SvgPicture.asset(
+                                                  'assets/icons/mini_screen/main_screen/lock.svg',
+                                                  width:
+                                                      MediaQueryValues(context)
+                                                              .miniScreenWidth *
+                                                          0.8 *
+                                                          0.05,
+                                                ),
+                                                SizedBox(
+                                                  width:
+                                                      MediaQueryValues(context)
+                                                              .miniScreenWidth *
+                                                          0.8 *
+                                                          0.02,
+                                                ),
+                                                FittedBox(
+                                                  child: DefaultTextStyle(
+                                                    style: TextStyle(
+                                                        fontSize: MediaQueryValues(
+                                                                    context)
+                                                                .miniScreenWidth *
+                                                            0.8 *
+                                                            0.05,
+                                                        fontWeight:
+                                                            FontWeight.bold,
+                                                        color: const Color
+                                                            .fromRGBO(
+                                                            33, 150, 83, 1)),
+                                                    child: const Text(
+                                                      'Unlock',
+                                                    ),
+                                                  ),
+                                                ),
+                                              ],
+                                            ),
+                                          )),
+                                        ],
                                       ),
                                     ],
                                   ),

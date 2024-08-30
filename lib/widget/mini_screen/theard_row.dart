@@ -108,7 +108,7 @@ class ThreardRow extends StatelessWidget {
         motion: const DrawerMotion(),
         dragDismissible: true,
         // extentRatio: 0.25,
-        openThreshold: 0.2,
+        // openThreshold: 0.2,
         children: [
           CustomSlidableAction(
             autoClose: true,
@@ -116,7 +116,7 @@ class ThreardRow extends StatelessWidget {
             foregroundColor: Colors.white,
             backgroundColor: const Color.fromRGBO(235, 87, 87, 1),
             onPressed: (context) {
-              // mainController.deleteItem(id: item.id!);
+              Get.find<MainController>().deleteItem(id: item.id!);
             },
             child: SvgPicture.asset('assets/icons/mini_screen/Slide.svg',
                 width: fontSize, height: fontSize * 2 * 0.7),
@@ -125,56 +125,70 @@ class ThreardRow extends StatelessWidget {
       ),
       endActionPane: ActionPane(
         motion: const BehindMotion(),
-        extentRatio: 0.45, // Adjust this value as needed
+        // extentRatio: 0, // Adjust this value as needed
+
         children: [
           Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                item.isFrezze == true
-                    ? CustomSlidableAction(
-                        onPressed: (context) {
-                          // Your action here
-                          Get.find<MainController>()
-                              .updateFrezzeStatus(item.id!, !item.isFrezze!);
-                        },
-                        padding: EdgeInsets.zero,
-                        backgroundColor: const Color.fromRGBO(155, 81, 224, 1),
-                        child: SvgPicture.asset(
-                          'assets/icons/mini_screen/freezOf.svg',
-                          // fit: BoxFit.contain,
-                          width: fontSize,
-                          height: fontSize * 2 * 0.7,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: const BorderRadius.all(Radius.circular(2)),
+                color: const Color.fromRGBO(155, 81, 224, 1),
+              ),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  item.isFrezze == true
+                      ? CustomSlidableAction(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(3)),
+                          onPressed: (context) {
+                            // Your action here
+                            Get.find<MainController>()
+                                .updateFrezzeStatus(item.id!, !item.isFrezze!);
+                          },
+                          padding: EdgeInsets.zero,
+                          backgroundColor:
+                              const Color.fromRGBO(155, 81, 224, 1),
+                          child: SvgPicture.asset(
+                            'assets/icons/mini_screen/freezOf.svg',
+                            // fit: BoxFit.contain,
+                            width: fontSize,
+                            height: fontSize * 2 * 0.7,
+                          ),
+                        )
+                      : CustomSlidableAction(
+                          borderRadius: const BorderRadius.only(
+                              topLeft: (Radius.circular(3)),
+                              bottomLeft: (Radius.circular(3))),
+                          onPressed: (context) {
+                            // Your action here
+                            Get.find<MainController>()
+                                .updateFrezzeStatus(item.id!, !item.isFrezze!);
+                          },
+                          padding: EdgeInsets.zero,
+                          backgroundColor:
+                              const Color.fromRGBO(155, 81, 224, 1),
+                          child: SvgPicture.asset(
+                            'assets/icons/mini_screen/Slide-1.svg',
+                            fit: BoxFit.contain,
+                            width: fontSize,
+                            height: fontSize * 2 * 0.7,
+                          ),
                         ),
-                      )
-                    : CustomSlidableAction(
-                        onPressed: (context) {
-                          // Your action here
-                          Get.find<MainController>()
-                              .updateFrezzeStatus(item.id!, !item.isFrezze!);
-                        },
-                        padding: EdgeInsets.zero,
-                        backgroundColor: const Color.fromRGBO(155, 81, 224, 1),
-                        child: SvgPicture.asset(
-                          'assets/icons/mini_screen/Slide-1.svg',
-                          fit: BoxFit.contain,
-                          width: fontSize,
-                          height: fontSize * 2 * 0.7,
-                        ),
-                      ),
-                _buildCustomSlidableAction(
-                    assetPath: 'assets/icons/mini_screen/Slide-2.svg',
-                    iconSizeHeight: fontSize * 0.7,
-                    iconSizeWidth: fontSize,
-                    item: item,
-                    mainController: Get.find<MainController>()),
-                _buildCustomSlidableAction(
-                    assetPath: 'assets/icons/mini_screen/Slide-3.svg',
-                    iconSizeHeight: fontSize * 0.7,
-                    iconSizeWidth: fontSize,
-                    item: item,
-                    mainController: Get.find<MainController>()),
-              ],
+                  _buildCustomSlidableAction(
+                      assetPath: 'assets/icons/mini_screen/Slide-2.svg',
+                      iconSizeHeight: fontSize * 0.7,
+                      iconSizeWidth: fontSize,
+                      item: item,
+                      mainController: Get.find<MainController>()),
+                  _buildCustomSlidableAction(
+                      assetPath: 'assets/icons/mini_screen/Slide-3.svg',
+                      iconSizeHeight: fontSize * 0.7,
+                      iconSizeWidth: fontSize,
+                      item: item,
+                      mainController: Get.find<MainController>()),
+                ],
+              ),
             ),
           ),
         ],

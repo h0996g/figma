@@ -42,14 +42,14 @@ final List<MealItem> products = [
       subtitle: 'Italien - Stor',
       isPcs: true,
       isFrezze: false),
-  MealItem(
-      name: 'Hat Trick 3 Meat Shawarma + Fries',
-      imageUrl:
-          'assets/images/fresh-tasty-homemade-burger-wooden-table (2) (1) 1-1.png',
-      price: '1200',
-      subtitle: 'Italien - Stor',
-      isPcs: true,
-      isFrezze: false),
+  // MealItem(
+  //     name: 'Hat Trick 3 Meat Shawarma + Fries',
+  //     imageUrl:
+  //         'assets/images/fresh-tasty-homemade-burger-wooden-table (2) (1) 1-1.png',
+  //     price: '1200',
+  //     subtitle: 'Italien - Stor',
+  //     isPcs: true,
+  //     isFrezze: false),
 ];
 
 final List<MealItem> mealItems = [];

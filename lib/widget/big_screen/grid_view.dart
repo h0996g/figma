@@ -41,29 +41,78 @@ class ProductGridView extends StatelessWidget {
         String? quantity;
         return AlertDialog(
           backgroundColor: Colors.white,
-          title: Text('Enter quantity for ${product.name}'),
-          content: TextField(
-            keyboardType: TextInputType.number,
-            onChanged: (value) {
-              quantity = value;
-            },
-            decoration: const InputDecoration(hintText: "Enter quantity"),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(5),
+          ),
+          contentPadding: const EdgeInsets.all(16),
+          title: const Text(
+            'Enter quantity',
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+            textAlign: TextAlign.center,
+          ),
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Text(
+                product.name,
+                style: const TextStyle(
+                  fontSize: 16,
+                  fontWeight: FontWeight.bold,
+                ),
+                textAlign: TextAlign.center,
+              ),
+              const SizedBox(height: 16),
+              TextField(
+                keyboardType: TextInputType.number,
+                onChanged: (value) {
+                  quantity = value;
+                },
+                decoration: const InputDecoration(
+                  hintText: "Enter quantity",
+                  border: OutlineInputBorder(),
+                ),
+                textAlign: TextAlign.center,
+              ),
+            ],
           ),
           actions: <Widget>[
-            TextButton(
-              child: const Text('Cancel'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-            TextButton(
-              child: const Text('Save'),
-              onPressed: () {
-                if (quantity != null && quantity!.isNotEmpty) {
-                  _saveMealItemToDatabase(product, quantity!);
-                  Navigator.of(context).pop();
-                }
-              },
+            Row(
+              children: [
+                Expanded(
+                  child: TextButton(
+                    child: const Text(
+                      'Cancel',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    // style: TextButton.styleFrom(
+                    //   backgroundColor: Colors.grey.shade300,
+                    // ),
+                    onPressed: () => Navigator.of(context).pop(),
+                  ),
+                ),
+                const SizedBox(width: 8),
+                Expanded(
+                  child: TextButton(
+                    child: const Text(
+                      'Save',
+                      style: TextStyle(color: Colors.black),
+                    ),
+                    // style: TextButton.styleFrom(
+                    //   // foregroundColor: Color.fromRGBO(33, 150, 83, 1),
+                    //   backgroundColor: Color.fromARGB(255, 219, 248, 231),
+                    // ),
+                    onPressed: () {
+                      if (quantity != null && quantity!.isNotEmpty) {
+                        _saveMealItemToDatabase(product, quantity!);
+                        Navigator.of(context).pop();
+                      }
+                    },
+                  ),
+                ),
+              ],
             ),
           ],
         );

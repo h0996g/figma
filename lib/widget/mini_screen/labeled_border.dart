@@ -39,20 +39,22 @@ class LabeledBorder extends StatelessWidget {
 
         // Right label
         // Positioned(
-        //   right: -4,
-        //   top: 0,
-        //   bottom: 0,
+        //   // right: -height * 0.16,
+        //   // top: 0,
+        //   // bottom: 0,
         //   child: Center(
-        //     child: RotatedBox(
-        //       quarterTurns: 1,
-        //       child: Container(
-        //         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-        //         color: isFrezze
-        //             ? const Color.fromRGBO(224, 236, 252, 1)
-        //             : Colors.grey[100]!.withOpacity(0.7),
+        //     child: Container(
+        //       width: width * 0.4,
+        //       height: height * 0.4,
+        //       padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+        //       color: isFrezze
+        //           ? const Color.fromRGBO(224, 236, 252, 1)
+        //           : Colors.grey[100]!.withOpacity(0.7),
+        //       child: FittedBox(
+        //         // fit: BoxFit.fill,
         //         child: Text(
         //           rightLabel,
-        //           style: const TextStyle(fontSize: 6),
+        //           style: TextStyle(fontSize: width * 0.15),
         //         ),
         //       ),
         //     ),
@@ -74,7 +76,7 @@ class LabeledBorder extends StatelessWidget {
                   ? const Color.fromRGBO(224, 236, 252, 1).withOpacity(0.4)
                   : Colors.grey[100]!.withOpacity(0.7),
               child: FittedBox(
-                fit: BoxFit.fill,
+                // fit: BoxFit.fill,
                 child: Text(
                   bottomLabel,
                   style: const TextStyle(fontSize: 7),
